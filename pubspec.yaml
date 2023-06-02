@@ -1,0 +1,51 @@
+name: i_home
+description: A new Flutter project.
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  freezed: ^2.3.4
+  freezed_annotation: ^2.2.0
+  flutter_bloc: ^8.1.2
+  bloc: ^8.1.1
+  firebase_core: ^2.13.0
+  google_sign_in: ^6.1.0
+  firebase_auth: ^4.6.1
+  injectable: ^2.1.1
+  get_it: ^7.6.0
+  injectable_generator: ^2.1.5
+  cloud_firestore: ^4.7.1
+  another_flushbar: ^1.12.30
+  uuid: ^3.0.7
+  auto_route: ^7.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^2.0.0
+  build_runner: ^2.3.3
+  lint: ^2.0.20
+
+flutter:
+
+ 
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+
+ 
