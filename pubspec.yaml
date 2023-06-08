@@ -27,6 +27,7 @@ dependencies:
   injectable_generator: ^2.1.5
   cloud_firestore: ^4.7.1
   google_fonts: ^4.0.4
+  flutter_screenutil: ^5.7.0
   
 
 dev_dependencies:
