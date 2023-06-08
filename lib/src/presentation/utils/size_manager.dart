@@ -1,4 +1,8 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class SizeManager {
+  static double deviceWidth = 375.w;
+  static double deviceHeight = 825.h;
   static const double s1 = 1.0;
   static const double s5 = 5.0;
   static const double s10 = 10.0;
@@ -9,6 +13,7 @@ class SizeManager {
   static const double s40 = 40.0;
   static const double s50 = 50.0;
   static const double s60 = 60.0;
+  static const double s345 = 345.0;
 }
 
 class PaddingManager {
