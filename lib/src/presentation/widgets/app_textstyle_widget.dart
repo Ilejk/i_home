@@ -6,9 +6,11 @@ TextStyle appTextStyleWidget({
   required double size,
   required Color color,
   required FontWeight fontWeight,
+  double letterSpacing = 0,
 }) =>
     GoogleFonts.poppins(
       fontSize: size.sp,
+      letterSpacing: letterSpacing,
       color: color,
       fontWeight: fontWeight,
     );

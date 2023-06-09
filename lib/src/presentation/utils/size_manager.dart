@@ -4,6 +4,9 @@ class SizeManager {
   static double deviceWidth = 375.w;
   static double deviceHeight = 825.h;
   static const double s1 = 1.0;
+  static const double s2 = 2.0;
+  static const double s2_5 = 2.5;
+  static const double s3 = 3.0;
   static const double s5 = 5.0;
   static const double s10 = 10.0;
   static const double s15 = 15.0;
@@ -13,7 +16,11 @@ class SizeManager {
   static const double s40 = 40.0;
   static const double s50 = 50.0;
   static const double s60 = 60.0;
+  static const double s200 = 200.0;
+  static const double s300 = 300.0;
   static const double s345 = 345.0;
+  static const double s500 = 500.0;
+  static const double s650 = 650.0;
 }
 
 class PaddingManager {
