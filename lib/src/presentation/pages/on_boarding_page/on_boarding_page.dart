@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_home/src/presentation/utils/color_manager.dart';
 import 'package:i_home/src/presentation/utils/font_manager.dart';
 import 'package:i_home/src/presentation/utils/size_manager.dart';
+import 'package:i_home/src/presentation/utils/string_manager.dart';
 import 'package:i_home/src/presentation/widgets/app_textstyle_widget.dart';
+import 'package:i_home/src/presentation/widgets/spacers.dart';
 import 'package:i_home/src/presentation/widgets/text_widget.dart';
 
 class BoardingPage extends StatefulWidget {
@@ -33,17 +35,22 @@ class _BoardingPageState extends State<BoardingPage> {
                       child: Text('IMAGE 1'),
                     ),
                     TextWidget(
-                      text: 'text 1',
+                      text: StringManager.onBoardingTitle1,
+                      maxLines: 2,
+                      align: TextAlign.center,
                       style: appTextStyleWidget(
-                        size: FontSize.s40.sp,
+                        size: FontSize.s30.sp,
                         color: ColorManager.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    const HeightSpacer(iH: SizeManager.s10),
                     TextWidget(
-                      text: 'subtext  1',
+                      maxLines: 2,
+                      align: TextAlign.center,
+                      text: StringManager.onBoardingSubTitle1,
                       style: appTextStyleWidget(
-                        size: FontSize.s25.sp,
+                        size: FontSize.s17.sp,
                         color: ColorManager.white54,
                         fontWeight: FontWeight.normal,
                       ),

@@ -5,19 +5,21 @@ class TextWidget extends StatelessWidget {
   final String text;
   final TextStyle style;
   final TextAlign align;
+  final int maxLines;
 
-  const TextWidget(
-      {Key? key,
-      required this.text,
-      required this.style,
-      this.align = TextAlign.left})
-      : super(key: key);
+  const TextWidget({
+    Key? key,
+    required this.text,
+    required this.style,
+    this.align = TextAlign.left,
+    this.maxLines = 1,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      maxLines: 1,
+      maxLines: maxLines,
       textAlign: align,
       softWrap: false,
       overflow: TextOverflow.fade,
