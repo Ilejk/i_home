@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/presentation/utils/color_manager.dart';
-import 'package:i_home/src/presentation/utils/size_manager.dart';
+import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
+import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
 
 class PhotoGrid1 extends StatelessWidget {
   const PhotoGrid1({
@@ -61,7 +61,7 @@ class PhotoGrid1 extends StatelessWidget {
             top: SizeManager.s150.h,
             right: SizeManager.s10.w,
             child: Container(
-              decoration: const BoxDecoration(color: ColorManager.white),
+              decoration: BoxDecoration(color: ColorManager.accentDarkYellow),
               width: SizeManager.s200.w,
               height: SizeManager.s200.w,
               child: Padding(
@@ -101,7 +101,7 @@ class PhotoGrid2 extends StatelessWidget {
             top: SizeManager.s50.h,
             left: SizeManager.s10.w,
             child: Container(
-              decoration: const BoxDecoration(color: ColorManager.white),
+              decoration: BoxDecoration(color: ColorManager.accentDarkYellow),
               width: SizeManager.s200.w,
               height: SizeManager.s200.w,
               child: Padding(
@@ -161,7 +161,7 @@ class PhotoGrid3 extends StatelessWidget {
             top: SizeManager.s150.h,
             left: SizeManager.s10.w,
             child: Container(
-              decoration: const BoxDecoration(color: ColorManager.white),
+              decoration: BoxDecoration(color: ColorManager.accentDarkYellow),
               width: SizeManager.s200.w,
               height: SizeManager.s200.w,
               child: Padding(

@@ -1,14 +1,16 @@
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_home/src/app/on_boarding_bloc/on_boarding_bloc_bloc.dart';
 import 'package:i_home/src/presentation/pages/on_boarding_page/widgets/on_boarding_page_column.dart';
 import 'package:i_home/src/presentation/pages/on_boarding_page/widgets/photo_type_grids.dart';
-import 'package:i_home/src/presentation/utils/asset_manager.dart';
-import 'package:i_home/src/presentation/utils/color_manager.dart';
-import 'package:i_home/src/presentation/utils/size_manager.dart';
-import 'package:i_home/src/presentation/utils/string_manager.dart';
+import 'package:i_home/src/presentation/router/router.dart';
+import 'package:i_home/src/presentation/utils/managers/asset_manager.dart';
+import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
+import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
+import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:i_home/src/presentation/utils/services/global_methods.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BoardingPage extends StatefulWidget {
   const BoardingPage({super.key});
@@ -18,6 +20,7 @@ class BoardingPage extends StatefulWidget {
 }
 
 class _BoardingPageState extends State<BoardingPage> {
+  PageController pageController = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,18 +32,18 @@ class _BoardingPageState extends State<BoardingPage> {
             child: Stack(
               children: [
                 PageView(
+                  controller: pageController,
                   onPageChanged: (index) {
                     state.page = index;
-                    BlocProvider.of<OnBoardingBlocBloc>(context)
-                        .add(OnBoardingBlocEvent());
+                    BlocProvider.of<OnBoardingBlocBloc>(context).add(
+                      OnBoardingBlocEvent(),
+                    );
                   },
                   children: [
                     OnBoardingPageColumn(
                       title: StringManager.onBoardingTitle1,
                       subtitle: StringManager.onBoardingSubTitle1,
-                      onTap: () {
-                        //TODO
-                      },
+                      onTap: () => _nextPage(1),
                       buttonTitle: StringManager.next,
                       photoGridType: const PhotoGrid1(
                         imagePath1: ImageManager.onBoardingColumn1_1,
@@ -51,9 +54,7 @@ class _BoardingPageState extends State<BoardingPage> {
                     OnBoardingPageColumn(
                       title: StringManager.onBoardingTitle2,
                       subtitle: StringManager.onBoardingSubTitle2,
-                      onTap: () {
-                        //TODO
-                      },
+                      onTap: () => _nextPage(2),
                       buttonTitle: StringManager.next,
                       photoGridType: const PhotoGrid2(
                         imagePath1: ImageManager.onBoardingColumn2_1,
@@ -63,11 +64,10 @@ class _BoardingPageState extends State<BoardingPage> {
                     OnBoardingPageColumn(
                       title: StringManager.onBoardingTitle3,
                       subtitle: StringManager.onBoardingSubTitle3,
-                      onTap: () {
-                        //TODO
-                      },
+                      onTap: () => GBM.pushAndReplaceNamed(
+                          context: context, routeName: Routes.authRoute),
                       buttonTitle: StringManager.getStarted,
-                      photoGridType: const PhotoGrid1(
+                      photoGridType: const PhotoGrid3(
                         imagePath1: ImageManager.onBoardingColumn3_1,
                         imagePath2: ImageManager.onBoardingColumn3_2,
                         imagePath3: ImageManager.onBoardingColumn3_3,
@@ -77,25 +77,16 @@ class _BoardingPageState extends State<BoardingPage> {
                 ),
                 Positioned(
                   bottom: SizeManager.s30.h,
-                  left: SizeManager.s100.w,
-                  right: SizeManager.s100.w,
-                  child: DotsIndicator(
-                    position: state.page,
-                    dotsCount: 3,
-                    decorator: DotsDecorator(
-                      color: ColorManager.accentDarkGrey,
-                      activeColor: ColorManager.accentDarkYellow,
-                      size: Size(
-                        SizeManager.s7.w,
-                        SizeManager.s7.h,
-                      ),
-                      activeSize: Size(
-                        SizeManager.s20.w,
-                        SizeManager.s8.h,
-                      ),
-                      activeShape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(SizeManager.s15),
-                      ),
+                  left: SizeManager.s150.w,
+                  right: SizeManager.s150.w,
+                  child: SmoothPageIndicator(
+                    controller: pageController,
+                    count: 3,
+                    effect: ExpandingDotsEffect(
+                      dotColor: ColorManager.accentDarkGrey,
+                      activeDotColor: ColorManager.accentDarkYellow,
+                      dotHeight: SizeManager.s10.h,
+                      dotWidth: SizeManager.s10.w,
                     ),
                   ),
                 )
@@ -104,6 +95,14 @@ class _BoardingPageState extends State<BoardingPage> {
           );
         },
       ),
+    );
+  }
+
+  Future<void> _nextPage(int index) {
+    return pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 650),
+      curve: Curves.decelerate,
     );
   }
 }

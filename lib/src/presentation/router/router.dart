@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:i_home/src/presentation/auth/auth_page.dart';
 import 'package:i_home/src/presentation/pages/home_page/home_page.dart';
 import 'package:i_home/src/presentation/pages/on_boarding_page/on_boarding_page.dart';
 import 'package:i_home/src/presentation/pages/sign_in_page/sign_in_page.dart';
-import 'package:i_home/src/presentation/utils/string_manager.dart';
+import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
 
 class Routes {
   static const String boardingRoute = '/';
+  static const String authRoute = '/authRoute';
   static const String signInRoute = '/signInRoute';
   static const String homeRoute = '/homeRoute';
 }
@@ -20,6 +21,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const HomePage());
       case Routes.signInRoute:
         return MaterialPageRoute(builder: (_) => const SignInPage());
+      case Routes.authRoute:
+        return MaterialPageRoute(builder: (_) => const AuthPage());
       default:
         return undefinedRoute();
     }
