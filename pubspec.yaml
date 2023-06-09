@@ -29,6 +29,8 @@ dependencies:
   google_fonts: ^4.0.4
   flutter_screenutil: ^5.7.0
   iconly: ^1.0.1
+  dots_indicator: ^3.0.0
+  smooth_page_indicator: ^1.1.0
   
 
 dev_dependencies:

@@ -22,8 +22,8 @@ class PhotoGrid1 extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: 50,
-            left: 10,
+            top: SizeManager.s50.h,
+            left: SizeManager.s10.w,
             child: Container(
               decoration: const BoxDecoration(color: ColorManager.white),
               width: SizeManager.s200.w,
@@ -40,8 +40,8 @@ class PhotoGrid1 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 300,
-            left: 10,
+            top: SizeManager.s300.h,
+            left: SizeManager.s10.w,
             child: Container(
               decoration: const BoxDecoration(color: ColorManager.white),
               width: SizeManager.s200.w,
@@ -58,8 +58,8 @@ class PhotoGrid1 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 150,
-            right: 10,
+            top: SizeManager.s150.h,
+            right: SizeManager.s10.w,
             child: Container(
               decoration: const BoxDecoration(color: ColorManager.white),
               width: SizeManager.s200.w,
@@ -98,8 +98,8 @@ class PhotoGrid2 extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: 50,
-            left: 10,
+            top: SizeManager.s50.h,
+            left: SizeManager.s10.w,
             child: Container(
               decoration: const BoxDecoration(color: ColorManager.white),
               width: SizeManager.s200.w,
@@ -116,8 +116,8 @@ class PhotoGrid2 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 300,
-            right: 10,
+            top: SizeManager.s300.h,
+            right: SizeManager.s10.w,
             child: Container(
               decoration: const BoxDecoration(color: ColorManager.white),
               width: SizeManager.s200.w,
@@ -158,8 +158,8 @@ class PhotoGrid3 extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: 150,
-            left: 10,
+            top: SizeManager.s150.h,
+            left: SizeManager.s10.w,
             child: Container(
               decoration: const BoxDecoration(color: ColorManager.white),
               width: SizeManager.s200.w,
@@ -176,8 +176,8 @@ class PhotoGrid3 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 50,
-            right: 10,
+            top: SizeManager.s50.h,
+            right: SizeManager.s10.w,
             child: Container(
               decoration: const BoxDecoration(color: ColorManager.white),
               width: SizeManager.s200.w,
@@ -194,8 +194,8 @@ class PhotoGrid3 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 300,
-            right: 10,
+            top: SizeManager.s300.h,
+            right: SizeManager.s10.w,
             child: Container(
               decoration: const BoxDecoration(color: ColorManager.white),
               width: SizeManager.s200.w,
