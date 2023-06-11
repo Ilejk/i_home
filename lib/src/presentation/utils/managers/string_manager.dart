@@ -22,6 +22,15 @@ class StringManager {
   static const String createAcc = 'Create an account';
   static const String startNow = 'Start your smart life';
   static const String alreadyHaverACC = 'Already have an account?';
+
+//HOME
+  static const String smartSpeaker = 'Smart speaker';
+  static const String broadcasting = 'BROADCASTING';
+  static const String homeDevice = 'SAMSUNG QN98B - YOUTUBE';
+  static const String homeSongTitle = 'Any Colour You Like';
+  static const String homeSongBand = 'Pink Floyd';
+  static const String allDevices = 'ALL DEVICES';
+  static const String quickAccess = 'Quick access';
 //ERROR
   static const String noRouteFound = 'No Route Found';
 }

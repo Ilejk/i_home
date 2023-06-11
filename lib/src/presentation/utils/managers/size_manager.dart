@@ -17,10 +17,17 @@ class SizeManager {
   static const double s25 = 25.0;
   static const double s30 = 30.0;
   static const double s40 = 40.0;
+  static const double s48 = 48.0;
   static const double s50 = 50.0;
   static const double s60 = 60.0;
+  static const double s65 = 65.0;
+  static const double s70 = 70.0;
   static const double s100 = 100.0;
+  static const double s110 = 110.0;
+  static const double s135 = 135.0;
   static const double s150 = 150.0;
+  static const double s170 = 170.0;
+  static const double s197 = 197.0;
   static const double s200 = 200.0;
   static const double s280 = 280.0;
   static const double s300 = 300.0;
@@ -32,6 +39,7 @@ class SizeManager {
 
 class PaddingManager {
   static const double p1 = 1.0;
+  static const double p3 = 3.0;
   static const double p5 = 5.0;
   static const double p10 = 10.0;
   static const double p12 = 12.0;

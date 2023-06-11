@@ -65,7 +65,7 @@ class _BoardingPageState extends State<BoardingPage> {
                       title: StringManager.onBoardingTitle3,
                       subtitle: StringManager.onBoardingSubTitle3,
                       onTap: () => GBM.pushAndReplaceNamed(
-                          context: context, routeName: Routes.signInRoute),
+                          context: context, routeName: Routes.homeRoute),
                       buttonTitle: StringManager.getStarted,
                       photoGridType: const PhotoGrid3(
                         imagePath1: ImageManager.onBoardingColumn3_1,

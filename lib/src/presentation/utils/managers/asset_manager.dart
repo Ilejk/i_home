@@ -13,4 +13,6 @@ class ImageManager {
   static const onBoardingColumn3_3 = '$imagePath/onBoarding8.webp';
   //SIGNIN
   static const signInBackGround = '$imagePath/signInBG.webp';
+  //HOME
+  static const homeSpotify = '$imagePath/spotify.webp';
 }
