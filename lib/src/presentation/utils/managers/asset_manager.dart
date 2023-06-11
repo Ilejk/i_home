@@ -15,4 +15,9 @@ class ImageManager {
   static const signInBackGround = '$imagePath/signInBG.webp';
   //HOME
   static const homeSpotify = '$imagePath/spotify.webp';
+  static const homeAC = '$imagePath/ac.png';
+  static const homefan = '$imagePath/fan.png';
+  static const homeLightBulb = '$imagePath/light-bulb.png';
+  static const homeSmartTv = '$imagePath/smart-tv.png';
+  static const homeTurnOn = '$imagePath/turn_on.png';
 }

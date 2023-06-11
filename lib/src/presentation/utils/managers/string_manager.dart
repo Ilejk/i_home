@@ -31,6 +31,9 @@ class StringManager {
   static const String homeSongBand = 'Pink Floyd';
   static const String allDevices = 'ALL DEVICES';
   static const String quickAccess = 'Quick access';
+  static const String favMods = 'Favourite modes';
+  static const String startModes = 'Start mode';
+  static const String allModes = 'ALL MODES';
 //ERROR
   static const String noRouteFound = 'No Route Found';
 }

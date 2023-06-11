@@ -1,6 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:i_home/src/presentation/pages/home_page/widgets/fav_mode_widget.dart';
+import 'package:i_home/src/presentation/pages/home_page/widgets/fav_mods_spacer.dart';
+import 'package:i_home/src/presentation/pages/home_page/widgets/home_device_widget.dart';
 import 'package:i_home/src/presentation/pages/home_page/widgets/home_page_smart_speaker.dart';
 import 'package:i_home/src/presentation/pages/home_page/widgets/home_page_smart_weather.dart';
 import 'package:i_home/src/presentation/pages/home_page/widgets/now_playing.dart';
@@ -14,6 +19,7 @@ import 'package:i_home/src/presentation/widgets/app_textstyle_widget.dart';
 import 'package:i_home/src/presentation/widgets/spacers.dart';
 import 'package:i_home/src/presentation/widgets/text_widget.dart';
 import 'package:iconly/iconly.dart';
+import 'package:slide_to_act/slide_to_act.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -47,6 +53,49 @@ class HomePage extends StatelessWidget {
                         //TODO
                       },
                     ),
+                    SizedBox(
+                      height: SizeManager.s150.h,
+                      child: ListView.builder(
+                        itemCount: 5,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          //TODO
+                          return HomeDeviceWidget(
+                            deviceType: 'Smart TV',
+                            deviceName: 'Samsung 56"Neo QLED 4KQN98B',
+                            deviceIcon: ImageManager.homeSmartTv,
+                            onChanged: (switchValue) {
+                              //TODO
+                            },
+                            switchValue: true,
+                          );
+                        },
+                      ),
+                    ),
+                    const HeightSpacer(iH: SizeManager.s20),
+                    FavModsSpacer(
+                      onTap: () {
+                        //TODO
+                      },
+                    ),
+                    const HeightSpacer(iH: SizeManager.s10),
+                    SizedBox(
+                      height: SizeManager.s150.h,
+                      child: ListView.builder(
+                        itemCount: 5,
+                        itemBuilder: (context, index) {
+                          return FavModesWidget(
+                            iconData: IconlyLight.notification,
+                            modeName: 'Good Monday morning!',
+                            timeSet: '6:00AM',
+                            setUpMode: 'Every Monday',
+                            onSubmit: () {
+                              //TODO
+                            },
+                          );
+                        },
+                      ),
+                    )
                   ],
                 ),
               )

@@ -22,7 +22,7 @@ class TextWidget extends StatelessWidget {
       maxLines: maxLines,
       textAlign: align,
       softWrap: false,
-      overflow: TextOverflow.fade,
+      overflow: TextOverflow.ellipsis,
       style: style,
     );
   }
