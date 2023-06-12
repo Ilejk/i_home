@@ -15,23 +15,28 @@ class RegisterRepository {
       String password = state.password;
       String name = state.name;
       String confirmPassword = state.confirmPassword;
-      if (emailAddress.isEmpty) {
+      var isEmailEmpty = emailAddress.isEmpty;
+      var isPasswordEmpty = password.isEmpty;
+      var isNameEmpty = name.isEmpty;
+      var isConfirmPasswordEmpty = confirmPassword.isEmpty;
+      var doesPasswordMatch = password != confirmPassword;
+      if (isEmailEmpty) {
         toastInfo(msg: 'You need to provide an email address');
         return;
       }
-      if (password.isEmpty) {
+      if (isPasswordEmpty) {
         toastInfo(msg: 'You need to provide password');
         return;
       }
-      if (name.isEmpty) {
+      if (isNameEmpty) {
         toastInfo(msg: 'You need to provide your full name');
         return;
       }
-      if (confirmPassword.isEmpty) {
+      if (isConfirmPasswordEmpty) {
         toastInfo(msg: 'Please repeat your password');
         return;
       }
-      if (password != confirmPassword) {
+      if (doesPasswordMatch) {
         toastInfo(msg: 'Passwords do not match');
       }
 //TODO!!!!
@@ -42,18 +47,22 @@ class RegisterRepository {
           password: password,
         );
 
-        if (credential.user != null) {
+        var isThereAUser = credential.user != null;
+        if (isThereAUser) {
           await credential.user?.sendEmailVerification();
           await credential.user?.updateDisplayName(name);
           toastInfo(msg: 'Check your email to verify your account');
           navigate;
         }
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'weak-password') {
+        var isPasswordWeak = e.code == 'weak-password';
+        var isEmailInUse = e.code == 'email-already-in-use';
+        var isEmailInvalid = e.code == 'invalid-email';
+        if (isPasswordWeak) {
           toastInfo(msg: 'The password is too weak!');
-        } else if (e.code == 'email-already-in-use') {
+        } else if (isEmailInUse) {
           toastInfo(msg: 'The email is already in use!');
-        } else if (e.code == 'invalid-email') {
+        } else if (isEmailInvalid) {
           toastInfo(msg: 'Invalid email');
         }
       }

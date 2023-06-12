@@ -13,36 +13,42 @@ class SignInRepository {
       final state = context.read<SignInBloc>().state;
       String emailAddress = state.email;
       String password = state.password;
-      if (emailAddress.isEmpty) {
+      var isPasswordEmpty = password.isEmpty;
+      var isEmailEmpty = emailAddress.isEmpty;
+      if (isEmailEmpty) {
         toastInfo(msg: 'You need to provide an email address');
         return;
       }
-      if (password.isEmpty) {
+      if (isPasswordEmpty) {
         toastInfo(msg: 'You need to provide password');
         return;
       }
-
       try {
         final credential =
             await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailAddress,
           password: password,
         );
-        if (credential.user == null) {
+        var doesUserExist = credential.user == null;
+        var isUserNotVerified = !credential.user!.emailVerified;
+        if (doesUserExist) {
           toastInfo(msg: 'Your account does not exist');
           return;
         }
-        if (!credential.user!.emailVerified) {
+        if (isUserNotVerified) {
           toastInfo(msg: 'You are not verified');
           return;
         }
         navigate;
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'user-not-found') {
+        var isUserNotFound = e.code == 'user-not-found';
+        var isPasswordWrong = e.code == 'wrong-password';
+        var isEmailInvalid = e.code == 'invalid-email';
+        if (isUserNotFound) {
           toastInfo(msg: 'No user found for this email');
-        } else if (e.code == 'wrong-password') {
+        } else if (isPasswordWrong) {
           toastInfo(msg: 'Invalid password');
-        } else if (e.code == 'invalid-email') {
+        } else if (isEmailInvalid) {
           toastInfo(msg: 'Invalid email');
         }
       }
