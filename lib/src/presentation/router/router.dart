@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:i_home/src/presentation/auth/auth_page.dart';
 import 'package:i_home/src/presentation/pages/devices_page/devices_page.dart';
+import 'package:i_home/src/presentation/pages/forgot_password_page/forgot_password_page.dart';
 import 'package:i_home/src/presentation/pages/home_page/home_page.dart';
 import 'package:i_home/src/presentation/pages/main_page/main_page.dart';
 import 'package:i_home/src/presentation/pages/modes_page/modes_page.dart';
 import 'package:i_home/src/presentation/pages/on_boarding_page/on_boarding_page.dart';
+import 'package:i_home/src/presentation/pages/register_page/register_page.dart';
 import 'package:i_home/src/presentation/pages/schedule_page/schedule_page.dart';
 import 'package:i_home/src/presentation/pages/sign_in_page/sign_in_page.dart';
 import 'package:i_home/src/presentation/pages/speak_page/speak_page.dart';
@@ -20,6 +22,8 @@ class Routes {
   static const String speakRoute = '/speakRoute';
   static const String modesRoute = '/modesRoute';
   static const String scheduleRoute = '/scheduleRoute';
+  static const String registerRoute = '/registerRoute';
+  static const String forgotPasswordRoute = '/forgotPasswordRoute';
 }
 
 class RouteGenerator {
@@ -43,6 +47,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ModesPage());
       case Routes.scheduleRoute:
         return MaterialPageRoute(builder: (_) => const SchedulePage());
+      case Routes.registerRoute:
+        return MaterialPageRoute(builder: (_) => const RegisterPage());
+      case Routes.forgotPasswordRoute:
+        return MaterialPageRoute(builder: (_) => const ForgotPasswordPage());
       default:
         return undefinedRoute();
     }

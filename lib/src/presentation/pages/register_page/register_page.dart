@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_home/src/app/sign_in_bloc/sign_in_bloc.dart';
-import 'package:i_home/src/presentation/pages/sign_in_page/repository/sign_in_repository.dart';
 import 'package:i_home/src/presentation/router/router.dart';
-import 'package:i_home/src/presentation/utils/managers/asset_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
@@ -15,100 +13,84 @@ import 'package:i_home/src/presentation/widgets/spacers.dart';
 import 'package:i_home/src/presentation/widgets/text_widget.dart';
 import 'package:iconly/iconly.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _RegisterPageState extends State<RegisterPage> {
   bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignInBloc, SignInState>(
-      builder: (context, state) {
-        return Scaffold(
-          body: Stack(
-            children: [
-              Image.asset(
-                ImageManager.signInBackGround,
-                fit: BoxFit.fill,
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  height: SizeManager.s500.h,
-                  width: SizeManager.deviceWidth,
-                  decoration: BoxDecoration(
-                    color: ColorManager.primaryDarkGrey,
-                    borderRadius: BorderRadius.circular(SizeManager.s40),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: PaddingManager.p24.h,
-                      horizontal: PaddingManager.p12.w,
-                    ),
-                    child: Column(
-                      children: [
-                        heightSpacer20(),
-                        signInPageTitle(),
-                        signInPageSubtitle(),
-                        heightSpacer20(),
-                        buildTextFieldWidget(
-                          label: StringManager.emailCaps,
-                          iconData: IconlyLight.message,
-                          onTap: (value) => context.read<SignInBloc>().add(
-                                EmailEvent(value),
-                              ),
-                          isNotPassword: true,
-                        ),
-                        buildTextFieldWidget(
-                          label: StringManager.passwordCaps,
-                          iconData: IconlyLight.lock,
-                          isNotPassword: false,
-                          iconButton: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                _obscureText = !_obscureText;
-                              });
-                            },
-                            icon: Icon(
-                              _obscureText
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              color: ColorManager.accentDarkYellow,
-                            ),
-                          ),
-                          onTap: (value) => context.read<SignInBloc>().add(
-                                PasswordEvent(value),
-                              ),
-                        ),
-                        heightSpacer20(),
-                        signInButton(),
-                        heightSpacer20(),
-                        forgotPasswordButton(),
-                        heightSpacer20(),
-                        goToRegisterPage(),
-                      ],
-                    ),
-                  ),
+    return Scaffold(
+      backgroundColor: ColorManager.primaryDarkGrey,
+      body: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: PaddingManager.p40.h,
+          horizontal: PaddingManager.p12.w,
+        ),
+        child: Column(
+          children: [
+            heightSpacer20(),
+            registerPageTitle(),
+            registerPageSubTitle(),
+            heightSpacer20(),
+            buildTextFieldWidget(
+              isNotPassword: true,
+              label: StringManager.nameCaps,
+              iconData: IconlyLight.profile,
+              onTap: (value) {
+                //TODO
+              },
+            ),
+            buildTextFieldWidget(
+              label: StringManager.emailCaps,
+              iconData: IconlyLight.message,
+              onTap: (value) {
+                //TODO
+              },
+              isNotPassword: true,
+            ),
+            buildTextFieldWidget(
+              label: StringManager.passwordCaps,
+              iconData: IconlyLight.lock,
+              isNotPassword: false,
+              iconButton: IconButton(
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+                icon: Icon(
+                  _obscureText ? Icons.visibility : Icons.visibility_off,
+                  color: ColorManager.accentDarkYellow,
                 ),
-              )
-            ],
-          ),
-        );
-      },
+              ),
+              onTap: (value) {
+                //TODO
+              },
+            ),
+            heightSpacer20(),
+            registerButton(),
+            heightSpacer20(),
+            alreadyHaveAccSpacer(),
+            heightSpacer20(),
+            goBackToSignInPageButton(),
+          ],
+        ),
+      ),
     );
   }
 
   HeightSpacer heightSpacer20() => const HeightSpacer(iH: SizeManager.s20);
 
-  Align signInPageSubtitle() {
+  Align registerPageSubTitle() {
     return Align(
       alignment: Alignment.centerLeft,
       child: TextWidget(
-        text: StringManager.signInToCtn,
+        text: StringManager.startNow,
         style: appTextStyleWidget(
           size: FontSize.s15,
           color: ColorManager.white54,
@@ -118,11 +100,11 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  Align signInPageTitle() {
+  Align registerPageTitle() {
     return Align(
       alignment: Alignment.centerLeft,
       child: TextWidget(
-        text: StringManager.welcomeBack,
+        text: StringManager.createAcc,
         style: appTextStyleWidget(
           size: FontSize.s30,
           color: ColorManager.white,
@@ -188,9 +170,11 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  GestureDetector signInButton() {
+  GestureDetector registerButton() {
     return GestureDetector(
-      onTap: () => SignInRepository(context: context).handleSignIn('email'),
+      onTap: () {
+        //TODO
+      },
       child: Container(
         width: SizeManager.s345.w,
         height: SizeManager.s50.h,
@@ -202,7 +186,7 @@ class _SignInPageState extends State<SignInPage> {
         ),
         child: Center(
           child: TextWidget(
-            text: StringManager.signIn,
+            text: StringManager.register,
             style: appTextStyleWidget(
               letterSpacing: SizeManager.s2,
               size: FontSize.s20,
@@ -215,7 +199,7 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  Row forgotPasswordButton() {
+  Row alreadyHaveAccSpacer() {
     return Row(
       children: [
         Expanded(
@@ -226,17 +210,13 @@ class _SignInPageState extends State<SignInPage> {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: PaddingManager.p5.w),
-          child: GestureDetector(
-            onTap: () => GBM.pushNamed(
-                context: context, routeName: Routes.forgotPasswordRoute),
-            child: TextWidget(
-              text: StringManager.forgotPW,
-              style: appTextStyleWidget(
-                size: FontSize.s12,
-                color: ColorManager.white54,
-                fontWeight: FontWeight.normal,
-                letterSpacing: SizeManager.s2,
-              ),
+          child: TextWidget(
+            text: StringManager.alreadyHaverACC,
+            style: appTextStyleWidget(
+              size: FontSize.s12,
+              color: ColorManager.white54,
+              fontWeight: FontWeight.normal,
+              letterSpacing: SizeManager.s2,
             ),
           ),
         ),
@@ -250,10 +230,9 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  GestureDetector goToRegisterPage() {
+  GestureDetector goBackToSignInPageButton() {
     return GestureDetector(
-      onTap: () =>
-          GBM.pushNamed(context: context, routeName: Routes.registerRoute),
+      onTap: () => GBM.pop(context: context),
       child: Container(
         width: SizeManager.s345.w,
         height: SizeManager.s50.h,
@@ -269,7 +248,7 @@ class _SignInPageState extends State<SignInPage> {
         ),
         child: Center(
           child: TextWidget(
-            text: StringManager.register,
+            text: StringManager.signIn,
             style: appTextStyleWidget(
               letterSpacing: SizeManager.s2,
               size: FontSize.s20,

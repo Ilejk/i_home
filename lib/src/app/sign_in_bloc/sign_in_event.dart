@@ -13,8 +13,3 @@ class PasswordEvent extends SignInEvent {
   final String password;
   const PasswordEvent(this.password);
 }
-
-class NameEvent extends SignInEvent {
-  final String name;
-  const NameEvent(this.name);
-}

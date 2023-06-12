@@ -17,7 +17,7 @@ class StringManager {
   static const String passwordCaps = 'PASSWORD';
   static const String nameCaps = 'NAME';
   static const String signIn = 'Sign in';
-  static const String signUp = 'Sign up';
+  static const String register = 'Register';
   static const String forgotPW = 'Forgot password?';
   static const String createAcc = 'Create an account';
   static const String startNow = 'Start your smart life';

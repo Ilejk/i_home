@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_home/src/app/on_boarding_bloc/on_boarding_bloc_bloc.dart';
 import 'package:i_home/src/app/sign_in_bloc/sign_in_bloc.dart';
+import 'package:i_home/src/presentation/core/bloc_providers/app_bloc_providers.dart';
 import 'package:i_home/src/presentation/router/router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,14 +12,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => OnBoardingBlocBloc(),
-        ),
-        BlocProvider(
-          create: (context) => SignInBloc(),
-        ),
-      ],
+      providers: AppBlocProviders.allBlocProviders,
       child: ScreenUtilInit(
         builder: (context, child) => const MaterialApp(
           debugShowCheckedModeBanner: false,

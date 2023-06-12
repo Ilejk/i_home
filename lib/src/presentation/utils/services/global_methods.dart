@@ -10,7 +10,7 @@ class GBM {
     Navigator.of(context).pushReplacementNamed(routeName);
   }
 
-  static pop({required BuildContext context, required String routeName}) {
+  static pop({required BuildContext context}) {
     Navigator.of(context).pop();
   }
 }
