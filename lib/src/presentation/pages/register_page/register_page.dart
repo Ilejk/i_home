@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:i_home/src/app/register_bloc/register_bloc.dart';
 import 'package:i_home/src/app/sign_in_bloc/sign_in_bloc.dart';
+import 'package:i_home/src/presentation/pages/register_page/repository/register_repository.dart';
 import 'package:i_home/src/presentation/router/router.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
@@ -24,63 +26,86 @@ class _RegisterPageState extends State<RegisterPage> {
   bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorManager.primaryDarkGrey,
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: PaddingManager.p40.h,
-          horizontal: PaddingManager.p12.w,
-        ),
-        child: Column(
-          children: [
-            heightSpacer20(),
-            registerPageTitle(),
-            registerPageSubTitle(),
-            heightSpacer20(),
-            buildTextFieldWidget(
-              isNotPassword: true,
-              label: StringManager.nameCaps,
-              iconData: IconlyLight.profile,
-              onTap: (value) {
-                //TODO
-              },
+    return BlocBuilder<RegisterBloc, RegisterState>(
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: ColorManager.primaryDarkGrey,
+          body: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: PaddingManager.p40.h,
+              horizontal: PaddingManager.p12.w,
             ),
-            buildTextFieldWidget(
-              label: StringManager.emailCaps,
-              iconData: IconlyLight.message,
-              onTap: (value) {
-                //TODO
-              },
-              isNotPassword: true,
-            ),
-            buildTextFieldWidget(
-              label: StringManager.passwordCaps,
-              iconData: IconlyLight.lock,
-              isNotPassword: false,
-              iconButton: IconButton(
-                onPressed: () {
-                  setState(() {
-                    _obscureText = !_obscureText;
-                  });
-                },
-                icon: Icon(
-                  _obscureText ? Icons.visibility : Icons.visibility_off,
-                  color: ColorManager.accentDarkYellow,
+            child: Column(
+              children: [
+                heightSpacer20(),
+                registerPageTitle(),
+                registerPageSubTitle(),
+                heightSpacer20(),
+                buildTextFieldWidget(
+                  isNotPassword: true,
+                  label: StringManager.nameCaps,
+                  iconData: IconlyLight.profile,
+                  onTap: (value) => context.read<RegisterBloc>().add(
+                        RegisterNameEvent(value),
+                      ),
                 ),
-              ),
-              onTap: (value) {
-                //TODO
-              },
+                buildTextFieldWidget(
+                  label: StringManager.emailCaps,
+                  iconData: IconlyLight.message,
+                  onTap: (value) => context.read<RegisterBloc>().add(
+                        RegisterEmailEvent(value),
+                      ),
+                  isNotPassword: true,
+                ),
+                buildTextFieldWidget(
+                  label: StringManager.passwordCaps,
+                  iconData: IconlyLight.lock,
+                  isNotPassword: false,
+                  iconButton: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                    icon: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                      color: ColorManager.accentDarkYellow,
+                    ),
+                  ),
+                  onTap: (value) => context.read<RegisterBloc>().add(
+                        RegisterPasswordEvent(value),
+                      ),
+                ),
+                buildTextFieldWidget(
+                  label: StringManager.confirmPW,
+                  iconData: IconlyLight.lock,
+                  isNotPassword: false,
+                  iconButton: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                    icon: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                      color: ColorManager.accentDarkYellow,
+                    ),
+                  ),
+                  onTap: (value) => context.read<RegisterBloc>().add(
+                        RegisterConfirmPasswordEvent(value),
+                      ),
+                ),
+                heightSpacer20(),
+                registerButton(),
+                heightSpacer20(),
+                alreadyHaveAccSpacer(),
+                heightSpacer20(),
+                goBackToSignInPageButton(),
+              ],
             ),
-            heightSpacer20(),
-            registerButton(),
-            heightSpacer20(),
-            alreadyHaveAccSpacer(),
-            heightSpacer20(),
-            goBackToSignInPageButton(),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
@@ -172,9 +197,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
   GestureDetector registerButton() {
     return GestureDetector(
-      onTap: () {
-        //TODO
-      },
+      onTap: () => RegisterRepository(context: context).handleEmailRegister(
+        GBM.pop(context: context),
+      ),
       child: Container(
         width: SizeManager.s345.w,
         height: SizeManager.s50.h,

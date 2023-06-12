@@ -22,6 +22,7 @@ class StringManager {
   static const String createAcc = 'Create an account';
   static const String startNow = 'Start your smart life';
   static const String alreadyHaverACC = 'Already have an account?';
+  static const String confirmPW = 'CONFIRM PASSWORD';
 
 //HOME
   static const String smartSpeaker = 'Smart speaker';

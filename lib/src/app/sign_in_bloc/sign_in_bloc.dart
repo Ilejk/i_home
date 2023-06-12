@@ -5,14 +5,14 @@ part 'sign_in_state.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc() : super(const SignInState()) {
-    on<EmailEvent>(_emailEvent);
-    on<PasswordEvent>(_passwordEvent);
+    on<SignInEmailEvent>(_emailEvent);
+    on<SignInPasswordEvent>(_passwordEvent);
   }
-  void _emailEvent(EmailEvent event, Emitter<SignInState> emit) {
+  void _emailEvent(SignInEmailEvent event, Emitter<SignInState> emit) {
     emit(state.copyWith(email: event.email));
   }
 
-  void _passwordEvent(PasswordEvent event, Emitter<SignInState> emit) {
+  void _passwordEvent(SignInPasswordEvent event, Emitter<SignInState> emit) {
     emit(state.copyWith(password: event.password));
   }
 }

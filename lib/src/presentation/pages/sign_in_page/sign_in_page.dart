@@ -59,7 +59,7 @@ class _SignInPageState extends State<SignInPage> {
                           label: StringManager.emailCaps,
                           iconData: IconlyLight.message,
                           onTap: (value) => context.read<SignInBloc>().add(
-                                EmailEvent(value),
+                                SignInEmailEvent(value),
                               ),
                           isNotPassword: true,
                         ),
@@ -81,7 +81,7 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                           ),
                           onTap: (value) => context.read<SignInBloc>().add(
-                                PasswordEvent(value),
+                                SignInPasswordEvent(value),
                               ),
                         ),
                         heightSpacer20(),
@@ -190,7 +190,12 @@ class _SignInPageState extends State<SignInPage> {
 
   GestureDetector signInButton() {
     return GestureDetector(
-      onTap: () => SignInRepository(context: context).handleSignIn('email'),
+      onTap: () => SignInRepository(context: context).handleSignIn(
+        GBM.pushAndReplaceNamed(
+          context: context,
+          routeName: Routes.mainRoute,
+        ),
+      ),
       child: Container(
         width: SizeManager.s345.w,
         height: SizeManager.s50.h,
