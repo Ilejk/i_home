@@ -29,19 +29,11 @@ class HomePage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                HomePageSmartWeather(
-                  onTap: () {
-                    //TODO
-                  },
-                ),
+                const HomePageSmartWeather(),
                 const HeightSpacer(iH: SizeManager.s20),
                 const HomePageSmartSpeaker(),
                 const HeightSpacer(iH: SizeManager.s20),
-                QuickAccessSpacer(
-                  onTap: () {
-                    //TODO
-                  },
-                ),
+                const QuickAccessSpacer(),
                 SizedBox(
                   height: SizeManager.s150.h,
                   child: ListView.builder(
@@ -62,11 +54,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 const HeightSpacer(iH: SizeManager.s20),
-                FavModsSpacer(
-                  onTap: () {
-                    //TODO
-                  },
-                ),
+                const FavModsSpacer(),
                 const HeightSpacer(iH: SizeManager.s10),
                 SizedBox(
                   height: SizeManager.s150.h,

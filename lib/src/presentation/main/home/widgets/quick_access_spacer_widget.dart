@@ -10,9 +10,8 @@ import 'package:iconly/iconly.dart';
 class QuickAccessSpacer extends StatelessWidget {
   const QuickAccessSpacer({
     super.key,
-    required this.onTap,
   });
-  final VoidCallback onTap;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -26,24 +25,12 @@ class QuickAccessSpacer extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        GestureDetector(
-          onTap: onTap,
-          child: Row(
-            children: [
-              TextWidget(
-                text: StringManager.allDevices,
-                style: appTextStyleWidget(
-                  size: FontSize.s15,
-                  color: ColorManager.accentDarkYellow,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-              Icon(
-                IconlyLight.arrow_right_2,
-                size: SizeManager.s20,
-                color: ColorManager.accentDarkYellow,
-              )
-            ],
+        TextWidget(
+          text: StringManager.devices,
+          style: appTextStyleWidget(
+            size: FontSize.s15,
+            color: ColorManager.accentDarkYellow,
+            fontWeight: FontWeight.normal,
           ),
         ),
       ],

@@ -7,10 +7,15 @@ import 'package:i_home/src/presentation/main/navigation/pages/navigation_page.da
 import 'package:i_home/src/presentation/main/modes/pages/modes_page.dart';
 import 'package:i_home/src/presentation/main/music/pages/music_page.dart';
 import 'package:i_home/src/presentation/main/on_boarding/pages/on_boarding_page.dart';
+import 'package:i_home/src/presentation/main/profile/pages/achievements/pages/achievements_page.dart';
+import 'package:i_home/src/presentation/main/profile/pages/connections/pages/connections_page.dart';
+import 'package:i_home/src/presentation/main/profile/pages/help/pages/help_page.dart';
+import 'package:i_home/src/presentation/main/profile/pages/payment/pages/payment_page.dart';
 import 'package:i_home/src/presentation/main/profile/pages/profile_page.dart';
 import 'package:i_home/src/presentation/auth/register/pages/register_page.dart';
 import 'package:i_home/src/presentation/main/schedule/pages/schedule_page.dart';
 import 'package:i_home/src/presentation/auth/login/pages/sign_in_page.dart';
+import 'package:i_home/src/presentation/main/profile/pages/settings/pages/settings_page.dart';
 import 'package:i_home/src/presentation/main/speak/pages/speak_page.dart';
 import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
 
@@ -28,6 +33,11 @@ class Routes {
   static const String forgotPasswordRoute = '/forgotPasswordRoute';
   static const String profileRoute = '/profileRoute';
   static const String musicRoute = '/musicRoute';
+  static const String settingsRoute = '/settingsRoute';
+  static const String connectionsRoute = '/connectionsRoute';
+  static const String achievementsRoute = '/achievementsRoute';
+  static const String helpRoute = '/helpRoute';
+  static const String paymentRoute = '/paymentRoute';
 }
 
 class RouteGenerator {
@@ -59,6 +69,16 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ProfilePage());
       case Routes.musicRoute:
         return MaterialPageRoute(builder: (_) => const MusicPage());
+      case Routes.settingsRoute:
+        return MaterialPageRoute(builder: (_) => const SettingsPage());
+      case Routes.paymentRoute:
+        return MaterialPageRoute(builder: (_) => const PaymentPage());
+      case Routes.helpRoute:
+        return MaterialPageRoute(builder: (_) => const HelpPage());
+      case Routes.connectionsRoute:
+        return MaterialPageRoute(builder: (_) => const ConnectionsPage());
+      case Routes.achievementsRoute:
+        return MaterialPageRoute(builder: (_) => const AchievementsPage());
       default:
         return undefinedRoute();
     }

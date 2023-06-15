@@ -30,11 +30,11 @@ class StringManager {
   static const String homeDevice = 'SAMSUNG QN98B - YOUTUBE';
   static const String homeSongTitle = 'Any Colour You Like';
   static const String homeSongBand = 'Pink Floyd';
-  static const String allDevices = 'ALL DEVICES';
+  static const String devices = 'DEVICES';
   static const String quickAccess = 'Quick access';
   static const String favMods = 'Favourite modes';
   static const String startModes = 'Start mode';
-  static const String allModes = 'ALL MODES';
+  static const String modes = 'MODES';
 //ERROR
   static const String noRouteFound = 'No Route Found';
   static const String emailMissing = 'You need to provide your email';
@@ -52,6 +52,24 @@ class StringManager {
   static const String notVerified = 'You are not verified';
   static const String uNotFoundForThisEmail = 'No user found for this email';
   static const String invalidPW = 'Invalid password';
+  //PROFILE
+  static const String profile = 'Profile';
+  static const String welcome = 'Welcome';
+  static const String settings = 'Settings';
+  static const String connections = 'Connections';
+  static const String editAcc = 'Edit Account';
+  static const String changePW = 'Change Password';
+  static const String security = 'Security & privacy';
+  static const String notification = 'Notification';
+  static const String appNotification = 'App notification';
+  static const String paymentMeth = 'Payment Methods';
+  static const String achievement = 'Achievements';
+  static const String help = 'Help';
+  static const String account = 'Account';
+  static const String more = 'More';
+  static const String language = 'Language';
+  static const String country = 'Country';
+  static const String logout = 'Log Out';
 }
 
 class ErrorCodeString {

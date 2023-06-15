@@ -2,37 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
-import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
 import 'package:i_home/src/presentation/widgets/app_textstyle_widget.dart';
+import 'package:i_home/src/presentation/widgets/spacers.dart';
 import 'package:i_home/src/presentation/widgets/text_widget.dart';
-import 'package:iconly/iconly.dart';
 
-class FavModsSpacer extends StatelessWidget {
-  const FavModsSpacer({
+class TitleSpacer extends StatelessWidget {
+  const TitleSpacer({
     super.key,
+    required this.ic,
+    required this.title,
   });
-
+  final IconData ic;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
+        Icon(
+          ic,
+          color: ColorManager.white,
+          size: SizeManager.s30,
+        ),
+        const WidthSpacer(iW: SizeManager.s10),
         TextWidget(
-          text: StringManager.favMods,
+          text: title,
           style: appTextStyleWidget(
-            size: FontSize.s17,
+            size: FontSize.s20,
             color: ColorManager.white,
+            letterSpacing: SizeManager.s1,
             fontWeight: FontWeight.w600,
           ),
-        ),
-        TextWidget(
-          text: StringManager.modes,
-          style: appTextStyleWidget(
-            size: FontSize.s15,
-            color: ColorManager.accentDarkYellow,
-            fontWeight: FontWeight.normal,
-          ),
-        ),
+        )
       ],
     );
   }
