@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/presentation/main/home/home/widgets/fav_mode_widget.dart';
-import 'package:i_home/src/presentation/main/home/home/widgets/fav_mods_spacer.dart';
-import 'package:i_home/src/presentation/main/home/home/widgets/home_device_widget.dart';
-import 'package:i_home/src/presentation/main/home/home/widgets/home_page_smart_speaker.dart';
-import 'package:i_home/src/presentation/main/home/home/widgets/home_page_smart_weather.dart';
-import 'package:i_home/src/presentation/main/home/home/widgets/quick_access_spacer_widget.dart';
+import 'package:i_home/src/presentation/main/home/widgets/fav_mode_widget.dart';
+import 'package:i_home/src/presentation/main/home/widgets/fav_mods_spacer.dart';
+import 'package:i_home/src/presentation/main/home/widgets/home_device_widget.dart';
+import 'package:i_home/src/presentation/main/home/widgets/home_page_smart_speaker.dart';
+import 'package:i_home/src/presentation/main/home/widgets/home_page_smart_weather.dart';
+import 'package:i_home/src/presentation/main/home/widgets/quick_access_spacer_widget.dart';
 import 'package:i_home/src/presentation/utils/managers/asset_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';

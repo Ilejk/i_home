@@ -15,7 +15,7 @@ class AppWidget extends StatelessWidget {
         builder: (context, child) => const MaterialApp(
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteGenerator.getRoute,
-          initialRoute: Routes.boardingRoute,
+          initialRoute: Routes.authRoute,
         ),
         designSize: const Size(375, 825),
         useInheritedMediaQuery: true,

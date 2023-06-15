@@ -4,12 +4,13 @@ import 'package:i_home/src/app/on_boarding_bloc/on_boarding_bloc_bloc.dart';
 import 'package:i_home/src/presentation/main/on_boarding/widgets/on_boarding_page_column.dart';
 import 'package:i_home/src/presentation/main/on_boarding/widgets/photo_type_grids.dart';
 import 'package:i_home/src/presentation/router/router.dart';
+import 'package:i_home/src/presentation/utils/constants.dart';
 import 'package:i_home/src/presentation/utils/managers/asset_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:i_home/src/presentation/utils/services/global_methods.dart';
+import 'package:i_home/src/presentation/utils/global/global_methods.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BoardingPage extends StatefulWidget {
@@ -64,8 +65,12 @@ class _BoardingPageState extends State<BoardingPage> {
                     OnBoardingPageColumn(
                       title: StringManager.onBoardingTitle3,
                       subtitle: StringManager.onBoardingSubTitle3,
-                      onTap: () => GBM.pushAndReplaceNamed(
-                          context: context, routeName: Routes.signInRoute),
+                      onTap: () {
+                        GBM.storageService.setBool(
+                            AppConst.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+                        GBM.pushAndReplaceNamed(
+                            context: context, routeName: Routes.signInRoute);
+                      },
                       buttonTitle: StringManager.getStarted,
                       photoGridType: const PhotoGrid3(
                         imagePath1: ImageManager.onBoardingColumn3_1,

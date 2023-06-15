@@ -4,14 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_home/src/app/bottom_bar_bloc/bottom_bar_bloc_bloc.dart';
 import 'package:i_home/src/presentation/main/devices/pages/devices_page.dart';
-import 'package:i_home/src/presentation/main/home/home/pages/home_page.dart';
+import 'package:i_home/src/presentation/main/home/pages/home_page.dart';
 import 'package:i_home/src/presentation/main/navigation/widgets/custom_painter.dart';
 import 'package:i_home/src/presentation/main/modes/pages/modes_page.dart';
 import 'package:i_home/src/presentation/main/schedule/pages/schedule_page.dart';
 import 'package:i_home/src/presentation/router/router.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
-import 'package:i_home/src/presentation/utils/services/global_methods.dart';
+import 'package:i_home/src/presentation/utils/global/global_methods.dart';
 import 'package:iconly/iconly.dart';
 
 class NavigationPage extends StatefulWidget {

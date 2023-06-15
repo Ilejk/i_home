@@ -9,7 +9,7 @@ import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
-import 'package:i_home/src/presentation/utils/services/global_methods.dart';
+import 'package:i_home/src/presentation/utils/global/global_methods.dart';
 import 'package:i_home/src/presentation/widgets/app_textstyle_widget.dart';
 import 'package:i_home/src/presentation/widgets/spacers.dart';
 import 'package:i_home/src/presentation/widgets/text_widget.dart';
