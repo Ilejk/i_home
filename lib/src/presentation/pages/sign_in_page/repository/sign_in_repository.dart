@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:i_home/src/app/sign_in_bloc/sign_in_bloc.dart';
+import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
 import 'package:i_home/src/presentation/widgets/flutter_toast.dart';
 
 class SignInRepository {
@@ -16,11 +17,11 @@ class SignInRepository {
       var isPasswordEmpty = password.isEmpty;
       var isEmailEmpty = emailAddress.isEmpty;
       if (isEmailEmpty) {
-        toastInfo(msg: 'You need to provide an email address');
+        toastInfo(msg: StringManager.emailMissing);
         return;
       }
       if (isPasswordEmpty) {
-        toastInfo(msg: 'You need to provide password');
+        toastInfo(msg: StringManager.passwordMissing);
         return;
       }
       try {
@@ -32,28 +33,28 @@ class SignInRepository {
         var doesUserExist = credential.user == null;
         var isUserNotVerified = !credential.user!.emailVerified;
         if (doesUserExist) {
-          toastInfo(msg: 'Your account does not exist');
+          toastInfo(msg: StringManager.accDoesNotExist);
           return;
         }
         if (isUserNotVerified) {
-          toastInfo(msg: 'You are not verified');
+          toastInfo(msg: StringManager.notVerified);
           return;
         }
         navigate;
       } on FirebaseAuthException catch (e) {
-        var isUserNotFound = e.code == 'user-not-found';
-        var isPasswordWrong = e.code == 'wrong-password';
-        var isEmailInvalid = e.code == 'invalid-email';
+        var isUserNotFound = e.code == ErrorCodeString.uNotFound;
+        var isPasswordWrong = e.code == ErrorCodeString.wrongPW;
+        var isEmailInvalid = e.code == ErrorCodeString.invalidEmail;
         if (isUserNotFound) {
-          toastInfo(msg: 'No user found for this email');
+          toastInfo(msg: StringManager.uNotFoundForThisEmail);
         } else if (isPasswordWrong) {
-          toastInfo(msg: 'Invalid password');
+          toastInfo(msg: StringManager.invalidPW);
         } else if (isEmailInvalid) {
-          toastInfo(msg: 'Invalid email');
+          toastInfo(msg: StringManager.invalidEmail);
         }
       }
     } catch (e) {
-      toastInfo(msg: 'Network Error');
+      toastInfo(msg: StringManager.netError);
     }
   }
 }

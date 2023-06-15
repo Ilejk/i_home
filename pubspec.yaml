@@ -14,17 +14,11 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  dartz: ^0.10.1
-  freezed: ^2.3.4
-  freezed_annotation: ^2.2.0
   flutter_bloc: ^8.1.2
   bloc: ^8.1.1
   firebase_core: ^2.13.1
   google_sign_in: ^6.1.0
   firebase_auth: ^4.6.1
-  injectable: ^2.1.1
-  get_it: ^7.6.0
-  injectable_generator: ^2.1.5
   cloud_firestore: ^4.7.1
   google_fonts: ^4.0.4
   flutter_screenutil: ^5.7.0

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class StringManager {
 //ONBOARDING
   static const String onBoardingTitle1 = 'Control Your\nHome Easily';
@@ -37,4 +39,27 @@ class StringManager {
   static const String allModes = 'ALL MODES';
 //ERROR
   static const String noRouteFound = 'No Route Found';
+  static const String emailMissing = 'You need to provide your email';
+  static const String passwordMissing = 'You need to provide password';
+  static const String nameMissing = 'You need to provide your full name';
+  static const String repeatPW = 'Please repeat your password';
+  static const String pwAreDiff = 'Passwords do not match';
+  static const String checkEmailtoVerify =
+      'Check your email to verify your account';
+  static const String weakPw = 'The password is too weak!';
+  static const String emailInUse = 'The email is already in use!';
+  static const String invalidEmail = 'Invalid email';
+  static const String netError = 'Network Error';
+  static const String accDoesNotExist = 'Your account does not exist';
+  static const String notVerified = 'You are not verified';
+  static const String uNotFoundForThisEmail = 'No user found for this email';
+  static const String invalidPW = 'Invalid password';
+}
+
+class ErrorCodeString {
+  static const String invalidEmail = 'invalid-email';
+  static const String emailInUse = 'email-already-in-use';
+  static const String weakPW = 'weak-password';
+  static const String uNotFound = 'user-not-found';
+  static const String wrongPW = 'wrong-password';
 }
