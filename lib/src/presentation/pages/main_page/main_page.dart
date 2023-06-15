@@ -5,7 +5,6 @@ import 'package:i_home/src/presentation/pages/devices_page/devices_page.dart';
 import 'package:i_home/src/presentation/pages/home_page/home_page.dart';
 import 'package:i_home/src/presentation/pages/modes_page/modes_page.dart';
 import 'package:i_home/src/presentation/pages/schedule_page/schedule_page.dart';
-import 'package:i_home/src/presentation/pages/speak_page/speak_page.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
 import 'package:iconly/iconly.dart';

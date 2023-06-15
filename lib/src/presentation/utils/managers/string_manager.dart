@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class StringManager {
 //ONBOARDING
   static const String onBoardingTitle1 = 'Control Your\nHome Easily';

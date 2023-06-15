@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_home/src/app/sign_in_bloc/sign_in_bloc.dart';
-import 'package:i_home/src/presentation/pages/sign_in_page/repository/sign_in_repository.dart';
+import 'package:i_home/src/domain/repo/sign_in_repository.dart';
 import 'package:i_home/src/presentation/router/router.dart';
 import 'package:i_home/src/presentation/utils/managers/asset_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
