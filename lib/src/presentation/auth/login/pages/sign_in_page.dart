@@ -193,7 +193,7 @@ class _SignInPageState extends State<SignInPage> {
       onTap: () => SignInRepository(context: context).handleSignIn(
         GBM.pushAndReplaceNamed(
           context: context,
-          routeName: Routes.mainRoute,
+          routeName: Routes.navigationRoute,
         ),
       ),
       child: Container(

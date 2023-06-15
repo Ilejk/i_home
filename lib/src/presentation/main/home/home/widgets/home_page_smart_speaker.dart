@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/presentation/pages/home_page/widgets/now_playing.dart';
+import 'package:i_home/src/presentation/main/home/home/widgets/now_playing.dart';
 import 'package:i_home/src/presentation/utils/managers/asset_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
