@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:i_home/src/presentation/auth/auth_page.dart';
-import 'package:i_home/src/presentation/pages/devices_page/devices_page.dart';
-import 'package:i_home/src/presentation/pages/forgot_password_page/forgot_password_page.dart';
-import 'package:i_home/src/presentation/pages/home_page/home_page.dart';
-import 'package:i_home/src/presentation/pages/main_page/main_page.dart';
-import 'package:i_home/src/presentation/pages/modes_page/modes_page.dart';
-import 'package:i_home/src/presentation/pages/music_page/music_page.dart';
-import 'package:i_home/src/presentation/pages/on_boarding_page/on_boarding_page.dart';
-import 'package:i_home/src/presentation/pages/profile_page/profile_page.dart';
-import 'package:i_home/src/presentation/pages/register_page/register_page.dart';
-import 'package:i_home/src/presentation/pages/schedule_page/schedule_page.dart';
-import 'package:i_home/src/presentation/pages/sign_in_page/sign_in_page.dart';
-import 'package:i_home/src/presentation/pages/speak_page/speak_page.dart';
+import 'package:i_home/src/presentation/auth/auth/pages/auth_page.dart';
+import 'package:i_home/src/presentation/main/devices/pages/devices_page.dart';
+import 'package:i_home/src/presentation/auth/forgot_password/pages/forgot_password_page.dart';
+import 'package:i_home/src/presentation/main/home/home/pages/home_page.dart';
+import 'package:i_home/src/presentation/main/navigation/pages/navigation_page.dart';
+import 'package:i_home/src/presentation/main/modes/pages/modes_page.dart';
+import 'package:i_home/src/presentation/main/home/music/pages/music_page.dart';
+import 'package:i_home/src/presentation/main/on_boarding/pages/on_boarding_page.dart';
+import 'package:i_home/src/presentation/main/home/profile/pages/profile_page.dart';
+import 'package:i_home/src/presentation/auth/register/pages/register_page.dart';
+import 'package:i_home/src/presentation/main/schedule/pages/schedule_page.dart';
+import 'package:i_home/src/presentation/auth/login/pages/sign_in_page.dart';
+import 'package:i_home/src/presentation/main/speak/pages/speak_page.dart';
 import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
 
 class Routes {
   static const String boardingRoute = '/';
-  static const String mainRoute = '/mainRoute';
+  static const String navigationRoute = '/navigationRoute';
   static const String authRoute = '/authRoute';
   static const String signInRoute = '/signInRoute';
   static const String homeRoute = '/homeRoute';
@@ -41,8 +41,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SignInPage());
       case Routes.authRoute:
         return MaterialPageRoute(builder: (_) => const AuthPage());
-      case Routes.mainRoute:
-        return MaterialPageRoute(builder: (_) => const MainPage());
+      case Routes.navigationRoute:
+        return MaterialPageRoute(builder: (_) => const NavigationPage());
       case Routes.devicesRoute:
         return MaterialPageRoute(builder: (_) => const DevicesPage());
       case Routes.speakRoute:
