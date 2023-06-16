@@ -72,6 +72,8 @@ class StringManager {
   static const String logout = 'Log Out';
   static const String uSure = 'Are you sure?';
   static const String cancel = 'Cancel';
+  static const String takePhoto = 'Take Photo';
+  static const String choosePhoto = 'Choose Photo';
 }
 
 class ErrorCodeString {

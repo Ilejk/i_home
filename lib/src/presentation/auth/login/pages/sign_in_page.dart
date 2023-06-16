@@ -42,7 +42,10 @@ class _SignInPageState extends State<SignInPage> {
                   width: SizeManager.deviceWidth,
                   decoration: BoxDecoration(
                     color: ColorManager.primaryDarkGrey,
-                    borderRadius: BorderRadius.circular(SizeManager.s40),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(SizeManager.s40),
+                      topRight: Radius.circular(SizeManager.s40),
+                    ),
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(

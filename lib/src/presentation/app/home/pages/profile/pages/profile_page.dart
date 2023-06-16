@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:i_home/src/bloc/profile_bloc/profile_bloc.dart';
+import 'package:i_home/src/domain/repo/profile_repository.dart';
 import 'package:i_home/src/presentation/app/home/pages/profile/widgets/button_column.dart';
 import 'package:i_home/src/presentation/app/home/pages/profile/widgets/profile_button.dart';
 import 'package:i_home/src/presentation/app/home/pages/profile/widgets/welcome_widget.dart';
@@ -13,7 +16,7 @@ import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
 import 'package:i_home/src/presentation/widgets/app_textstyle_widget.dart';
 import 'package:i_home/src/presentation/widgets/spacers.dart';
 import 'package:i_home/src/presentation/widgets/text_widget.dart';
-import 'package:iconly/iconly.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -25,47 +28,125 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: ColorManager.primaryDarkGrey,
-        title: TextWidget(
-          text: StringManager.profile,
-          style: appTextStyleWidget(
-            size: FontSize.s20,
-            color: ColorManager.white,
-            fontWeight: FontWeight.normal,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              //TODO
-            },
-            icon: const Icon(
-              Icons.more_vert_rounded,
-              size: SizeManager.s25,
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            elevation: 0.0,
+            backgroundColor: ColorManager.primaryDarkGrey,
+            title: TextWidget(
+              text: StringManager.profile,
+              style: appTextStyleWidget(
+                size: FontSize.s20,
+                color: ColorManager.white,
+                fontWeight: FontWeight.normal,
+              ),
             ),
-          )
-        ],
-      ),
-      backgroundColor: ColorManager.primaryDarkGrey,
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: PaddingManager.p12.w,
-            vertical: PaddingManager.p24.h,
-          ),
-          child: Column(
-            children: [
-              WelcomeWidget(
-                onTap: () {
+            actions: [
+              IconButton(
+                onPressed: () {
                   //TODO
                 },
-              ),
-              const HeightSpacer(iH: SizeManager.s20),
-              const ProfileButtonColumn(),
+                icon: const Icon(
+                  Icons.more_vert_rounded,
+                  size: SizeManager.s25,
+                ),
+              )
             ],
+          ),
+          backgroundColor: ColorManager.primaryDarkGrey,
+          body: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: PaddingManager.p12.w,
+                vertical: PaddingManager.p24.h,
+              ),
+              child: Column(
+                children: [
+                  WelcomeWidget(
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return Container(
+                            height: SizeManager.s200.h,
+                            decoration: BoxDecoration(
+                              color: ColorManager.primaryDarkGrey,
+                            ),
+                            child: Column(
+                              children: [
+                                BottomSheetButton(
+                                  onTap: () {
+                                    ProfileRepository(context: context)
+                                        .handleImagePicking(ImageSource.camera);
+                                  },
+                                  title: StringManager.takePhoto,
+                                ),
+                                BottomSheetButton(
+                                  onTap: () {
+                                    ProfileRepository(context: context)
+                                        .handleImagePicking(
+                                            ImageSource.gallery);
+                                  },
+                                  title: StringManager.choosePhoto,
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                  const HeightSpacer(iH: SizeManager.s20),
+                  const ProfileButtonColumn(),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class BottomSheetButton extends StatelessWidget {
+  const BottomSheetButton({
+    super.key,
+    required this.onTap,
+    required this.title,
+  });
+  final VoidCallback onTap;
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: PaddingManager.p12.h,
+        horizontal: PaddingManager.p24.w,
+      ),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          height: SizeManager.s50.h,
+          width: SizeManager.deviceWidth,
+          decoration: BoxDecoration(
+            color: ColorManager.primaryDarkGrey,
+            border: Border.all(
+              color: ColorManager.accentDarkYellow,
+              width: SizeManager.s1.h,
+            ),
+            borderRadius: BorderRadius.circular(SizeManager.s20),
+          ),
+          child: Center(
+            child: TextWidget(
+              align: TextAlign.center,
+              text: title,
+              style: appTextStyleWidget(
+                size: FontSize.s20,
+                color: ColorManager.white,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
           ),
         ),
       ),

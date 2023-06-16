@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,6 +54,13 @@ class RegisterRepository {
           await credential.user?.sendEmailVerification();
           await credential.user?.updateDisplayName(name);
           toastInfo(msg: StringManager.checkEmailtoVerify);
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(credential.user!.uid)
+              .set({
+            'email': emailAddress,
+            'name': name,
+          });
           navigate;
         }
       } on FirebaseAuthException catch (e) {
