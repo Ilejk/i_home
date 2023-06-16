@@ -12,8 +12,9 @@ import 'package:i_home/src/presentation/widgets/text_widget.dart';
 class WelcomeWidget extends StatelessWidget {
   const WelcomeWidget({
     super.key,
+    required this.onTap,
   });
-
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,12 +38,15 @@ class WelcomeWidget extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(SizeManager.s50),
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(SizeManager.s50),
-              child: Image.asset(
-                ImageManager.homeSpotify,
-                //TODO
-                fit: BoxFit.fill,
+            child: GestureDetector(
+              onTap: onTap,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(SizeManager.s50),
+                child: Image.asset(
+                  ImageManager.homeSpotify,
+                  //TODO
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
           ),

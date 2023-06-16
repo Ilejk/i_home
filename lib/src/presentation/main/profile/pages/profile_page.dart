@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:i_home/src/presentation/main/profile/widgets/button_column.dart';
 import 'package:i_home/src/presentation/main/profile/widgets/profile_button.dart';
 import 'package:i_home/src/presentation/main/profile/widgets/welcome_widget.dart';
 import 'package:i_home/src/presentation/router/router.dart';
 import 'package:i_home/src/presentation/utils/global/global_methods.dart';
-import 'package:i_home/src/presentation/utils/managers/asset_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
@@ -58,42 +58,13 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           child: Column(
             children: [
-              const WelcomeWidget(),
-              const HeightSpacer(iH: SizeManager.s20),
-              Column(
-                children: [
-                  ProfileButton(
-                    ic: IconlyBold.setting,
-                    title: StringManager.settings,
-                    onTap: () => GBM.pushNamed(
-                        context: context, routeName: Routes.settingsRoute),
-                  ),
-                  ProfileButton(
-                    ic: CupertinoIcons.creditcard_fill,
-                    title: StringManager.paymentMeth,
-                    onTap: () => GBM.pushNamed(
-                        context: context, routeName: Routes.paymentRoute),
-                  ),
-                  ProfileButton(
-                    ic: CupertinoIcons.bookmark_fill,
-                    title: StringManager.achievement,
-                    onTap: () => GBM.pushNamed(
-                        context: context, routeName: Routes.achievementsRoute),
-                  ),
-                  ProfileButton(
-                    ic: Icons.connected_tv,
-                    title: StringManager.connections,
-                    onTap: () => GBM.pushNamed(
-                        context: context, routeName: Routes.connectionsRoute),
-                  ),
-                  ProfileButton(
-                    ic: Icons.help_outline_rounded,
-                    title: StringManager.help,
-                    onTap: () => GBM.pushNamed(
-                        context: context, routeName: Routes.helpRoute),
-                  ),
-                ],
+              WelcomeWidget(
+                onTap: () {
+                  //TODO
+                },
               ),
+              const HeightSpacer(iH: SizeManager.s20),
+              const ProfileButtonColumn(),
             ],
           ),
         ),

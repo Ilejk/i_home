@@ -70,6 +70,8 @@ class StringManager {
   static const String language = 'Language';
   static const String country = 'Country';
   static const String logout = 'Log Out';
+  static const String uSure = 'Are you sure?';
+  static const String cancel = 'Cancel';
 }
 
 class ErrorCodeString {
