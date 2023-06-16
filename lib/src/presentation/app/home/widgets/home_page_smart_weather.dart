@@ -16,14 +16,18 @@ class HomePageSmartWeather extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          width: SizeManager.s150.w,
-          height: SizeManager.s50.h,
-          decoration: BoxDecoration(
-            color: ColorManager.secondaryDarkGrey,
-            borderRadius: BorderRadius.circular(SizeManager.s40),
+        GestureDetector(
+          onTap: () =>
+              GBM.pushNamed(context: context, routeName: Routes.weatherRoute),
+          child: Container(
+            width: SizeManager.s150.w,
+            height: SizeManager.s50.h,
+            decoration: BoxDecoration(
+              color: ColorManager.secondaryDarkGrey,
+              borderRadius: BorderRadius.circular(SizeManager.s40),
+            ),
+            child: const Center(child: Text('TODO')), // TODO
           ),
-          child: const Center(child: Text('TODO')), // TODO
         ),
         GestureDetector(
           onTap: () =>

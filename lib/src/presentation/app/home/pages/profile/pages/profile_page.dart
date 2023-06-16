@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/presentation/main/profile/widgets/button_column.dart';
-import 'package:i_home/src/presentation/main/profile/widgets/profile_button.dart';
-import 'package:i_home/src/presentation/main/profile/widgets/welcome_widget.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/widgets/button_column.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/widgets/profile_button.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/widgets/welcome_widget.dart';
 import 'package:i_home/src/presentation/router/router.dart';
 import 'package:i_home/src/presentation/utils/global/global_methods.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';

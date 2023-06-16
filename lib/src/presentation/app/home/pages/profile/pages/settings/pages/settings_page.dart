@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/app/settings_bloc/settings_bloc.dart';
-import 'package:i_home/src/presentation/main/profile/pages/settings/widgets/settings_button.dart';
-import 'package:i_home/src/presentation/main/profile/pages/settings/widgets/title_spacer.dart';
+import 'package:i_home/src/bloc/settings_bloc/settings_bloc.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/pages/settings/widgets/settings_button.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/pages/settings/widgets/title_spacer.dart';
 import 'package:i_home/src/presentation/router/router.dart';
-import 'package:i_home/src/presentation/utils/constants.dart';
+import 'package:i_home/src/presentation/utils/constnants/constants.dart';
 import 'package:i_home/src/presentation/utils/global/global_methods.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
@@ -17,9 +17,14 @@ import 'package:i_home/src/presentation/widgets/spacers.dart';
 import 'package:i_home/src/presentation/widgets/text_widget.dart';
 import 'package:iconly/iconly.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SettingsBloc, SettingsState>(

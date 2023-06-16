@@ -2,26 +2,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/app/bottom_bar_bloc/bottom_bar_bloc_bloc.dart';
-import 'package:i_home/src/presentation/main/devices/pages/devices_page.dart';
-import 'package:i_home/src/presentation/main/home/pages/home_page.dart';
-import 'package:i_home/src/presentation/main/navigation/widgets/custom_painter.dart';
-import 'package:i_home/src/presentation/main/modes/pages/modes_page.dart';
-import 'package:i_home/src/presentation/main/schedule/pages/schedule_page.dart';
+import 'package:i_home/src/bloc/bottom_bar_bloc/bottom_bar_bloc_bloc.dart';
+import 'package:i_home/src/presentation/app/devices/pages/devices_page.dart';
+import 'package:i_home/src/presentation/app/home/pages/home_page.dart';
+import 'package:i_home/src/presentation/app/main/widgets/custom_painter.dart';
+import 'package:i_home/src/presentation/app/modes/pages/modes_page.dart';
+import 'package:i_home/src/presentation/app/schedule/pages/schedule_page.dart';
 import 'package:i_home/src/presentation/router/router.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
 import 'package:i_home/src/presentation/utils/global/global_methods.dart';
 import 'package:iconly/iconly.dart';
 
-class NavigationPage extends StatefulWidget {
-  const NavigationPage({super.key});
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<NavigationPage> createState() => _NavigationPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _NavigationPageState extends State<NavigationPage> {
+class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

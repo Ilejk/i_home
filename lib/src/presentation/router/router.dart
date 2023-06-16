@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:i_home/src/presentation/auth/auth/pages/auth_page.dart';
-import 'package:i_home/src/presentation/main/devices/pages/devices_page.dart';
+import 'package:i_home/src/presentation/app/devices/pages/devices_page.dart';
 import 'package:i_home/src/presentation/auth/forgot_password/pages/forgot_password_page.dart';
-import 'package:i_home/src/presentation/main/home/pages/home_page.dart';
-import 'package:i_home/src/presentation/main/navigation/pages/navigation_page.dart';
-import 'package:i_home/src/presentation/main/modes/pages/modes_page.dart';
-import 'package:i_home/src/presentation/main/music/pages/music_page.dart';
-import 'package:i_home/src/presentation/main/on_boarding/pages/on_boarding_page.dart';
-import 'package:i_home/src/presentation/main/profile/pages/achievements/pages/achievements_page.dart';
-import 'package:i_home/src/presentation/main/profile/pages/connections/pages/connections_page.dart';
-import 'package:i_home/src/presentation/main/profile/pages/help/pages/help_page.dart';
-import 'package:i_home/src/presentation/main/profile/pages/payment/pages/payment_page.dart';
-import 'package:i_home/src/presentation/main/profile/pages/profile_page.dart';
+import 'package:i_home/src/presentation/app/home/pages/home_page.dart';
+import 'package:i_home/src/presentation/app/main/pages/main_page.dart';
+import 'package:i_home/src/presentation/app/modes/pages/modes_page.dart';
+import 'package:i_home/src/presentation/app/home/pages/music/pages/music_page.dart';
+import 'package:i_home/src/presentation/app/on_boarding/pages/on_boarding_page.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/pages/achievements/pages/achievements_page.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/pages/connections/pages/connections_page.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/pages/help/pages/help_page.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/pages/payment/pages/payment_page.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/pages/profile_page.dart';
 import 'package:i_home/src/presentation/auth/register/pages/register_page.dart';
-import 'package:i_home/src/presentation/main/schedule/pages/schedule_page.dart';
+import 'package:i_home/src/presentation/app/schedule/pages/schedule_page.dart';
 import 'package:i_home/src/presentation/auth/login/pages/sign_in_page.dart';
-import 'package:i_home/src/presentation/main/profile/pages/settings/pages/settings_page.dart';
-import 'package:i_home/src/presentation/main/speak/pages/speak_page.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/pages/settings/pages/settings_page.dart';
+import 'package:i_home/src/presentation/app/speak/pages/speak_page.dart';
+import 'package:i_home/src/presentation/app/home/pages/weather/pages/weather_page.dart';
 import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
 
 class Routes {
   static const String boardingRoute = '/';
-  static const String navigationRoute = '/navigationRoute';
+  static const String mainRoute = '/mainRoute';
   static const String authRoute = '/authRoute';
   static const String signInRoute = '/signInRoute';
   static const String homeRoute = '/homeRoute';
@@ -38,6 +39,7 @@ class Routes {
   static const String achievementsRoute = '/achievementsRoute';
   static const String helpRoute = '/helpRoute';
   static const String paymentRoute = '/paymentRoute';
+  static const String weatherRoute = '/weatherRoute';
 }
 
 class RouteGenerator {
@@ -51,8 +53,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SignInPage());
       case Routes.authRoute:
         return MaterialPageRoute(builder: (_) => const AuthPage());
-      case Routes.navigationRoute:
-        return MaterialPageRoute(builder: (_) => const NavigationPage());
+      case Routes.mainRoute:
+        return MaterialPageRoute(builder: (_) => const MainPage());
       case Routes.devicesRoute:
         return MaterialPageRoute(builder: (_) => const DevicesPage());
       case Routes.speakRoute:
@@ -79,6 +81,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ConnectionsPage());
       case Routes.achievementsRoute:
         return MaterialPageRoute(builder: (_) => const AchievementsPage());
+      case Routes.weatherRoute:
+        return MaterialPageRoute(builder: (_) => const WeatherPage());
       default:
         return undefinedRoute();
     }

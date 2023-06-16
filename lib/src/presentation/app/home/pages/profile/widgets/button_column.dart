@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:i_home/src/presentation/main/profile/widgets/profile_button.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/widgets/profile_button.dart';
 import 'package:i_home/src/presentation/router/router.dart';
 import 'package:i_home/src/presentation/utils/global/global_methods.dart';
 import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
