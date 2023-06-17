@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/pages/settings/pages/change_password/pages/change_password_page.dart';
+import 'package:i_home/src/presentation/app/home/pages/profile/pages/settings/pages/edit_account/pages/edit_account_page.dart';
 import 'package:i_home/src/presentation/auth/auth/pages/auth_page.dart';
 import 'package:i_home/src/presentation/app/devices/pages/devices_page.dart';
 import 'package:i_home/src/presentation/auth/forgot_password/pages/forgot_password_page.dart';
@@ -40,6 +42,8 @@ class Routes {
   static const String helpRoute = '/helpRoute';
   static const String paymentRoute = '/paymentRoute';
   static const String weatherRoute = '/weatherRoute';
+  static const String editAccountRoute = '/editAccountRoute';
+  static const String changePasswordRoute = '/changePasswordRoute';
 }
 
 class RouteGenerator {
@@ -83,6 +87,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const AchievementsPage());
       case Routes.weatherRoute:
         return MaterialPageRoute(builder: (_) => const WeatherPage());
+      case Routes.editAccountRoute:
+        return MaterialPageRoute(builder: (_) => const EditAccountPage());
+      case Routes.changePasswordRoute:
+        return MaterialPageRoute(builder: (_) => const ChangePasswordPage());
       default:
         return undefinedRoute();
     }
