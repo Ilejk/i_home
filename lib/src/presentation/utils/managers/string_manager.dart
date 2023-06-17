@@ -23,6 +23,14 @@ class StringManager {
   static const String startNow = 'Start your smart life';
   static const String alreadyHaverACC = 'Already have an account?';
   static const String confirmPW = 'CONFIRM PASSWORD';
+  static const String reset = 'Reset';
+  static const String forgotPWTitile = 'Forgot your password?';
+  static const String forgotPWSubtitle =
+      'Enter your email\nto reset your password';
+  static const String theSamePassword =
+      'New password is the same as an old one';
+  static const String oldPWCaps = 'OLD PASSWORD';
+  static const String newPWCaps = 'NEW PASSWORD';
 
 //HOME
   static const String smartSpeaker = 'Smart speaker';
@@ -42,6 +50,7 @@ class StringManager {
   static const String nameMissing = 'You need to provide your full name';
   static const String repeatPW = 'Please repeat your password';
   static const String pwAreDiff = 'Passwords do not match';
+  static const String passwordChanged = 'Password has been changed';
   static const String checkEmailtoVerify =
       'Check your email to verify your account';
   static const String weakPw = 'The password is too weak!';
@@ -52,6 +61,8 @@ class StringManager {
   static const String notVerified = 'You are not verified';
   static const String uNotFoundForThisEmail = 'No user found for this email';
   static const String invalidPW = 'Invalid password';
+  static const String resetEmailHasBeenSent =
+      'An email with a link to reset your password has been sent';
   //PROFILE
   static const String profile = 'Profile';
   static const String welcome = 'Welcome';

@@ -54,15 +54,13 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 SettingsButton(
                   title: StringManager.editAcc,
-                  onTap: () {
-                    //TODO
-                  },
+                  onTap: () => GBM.pushNamed(
+                      context: context, routeName: Routes.editAccountRoute),
                 ),
                 SettingsButton(
                   title: StringManager.changePW,
-                  onTap: () {
-                    //TODO
-                  },
+                  onTap: () => GBM.pushNamed(
+                      context: context, routeName: Routes.changePasswordRoute),
                 ),
                 SettingsButton(
                   title: StringManager.security,

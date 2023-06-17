@@ -61,7 +61,7 @@ class RegisterRepository {
             'email': emailAddress,
             'name': name,
           });
-          navigate;
+          navigate();
         }
       } on FirebaseAuthException catch (e) {
         var isPasswordWeak = e.code == ErrorCodeString.weakPW;

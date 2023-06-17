@@ -33,73 +33,75 @@ class _RegisterPageState extends State<RegisterPage> {
               vertical: PaddingManager.p40.h,
               horizontal: PaddingManager.p12.w,
             ),
-            child: Column(
-              children: [
-                heightSpacer20(),
-                registerPageTitle(),
-                registerPageSubTitle(),
-                heightSpacer20(),
-                buildTextFieldWidget(
-                  isNotPassword: true,
-                  label: StringManager.nameCaps,
-                  iconData: IconlyLight.profile,
-                  onTap: (value) => context.read<RegisterBloc>().add(
-                        RegisterNameEvent(value),
-                      ),
-                ),
-                buildTextFieldWidget(
-                  label: StringManager.emailCaps,
-                  iconData: IconlyLight.message,
-                  onTap: (value) => context.read<RegisterBloc>().add(
-                        RegisterEmailEvent(value),
-                      ),
-                  isNotPassword: true,
-                ),
-                buildTextFieldWidget(
-                  label: StringManager.passwordCaps,
-                  iconData: IconlyLight.lock,
-                  isNotPassword: false,
-                  iconButton: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _obscureText = !_obscureText;
-                      });
-                    },
-                    icon: Icon(
-                      _obscureText ? Icons.visibility : Icons.visibility_off,
-                      color: ColorManager.accentDarkYellow,
-                    ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  heightSpacer20(),
+                  registerPageTitle(),
+                  registerPageSubTitle(),
+                  heightSpacer20(),
+                  buildTextFieldWidget(
+                    isNotPassword: true,
+                    label: StringManager.nameCaps,
+                    iconData: IconlyLight.profile,
+                    onTap: (value) => context.read<RegisterBloc>().add(
+                          RegisterNameEvent(value),
+                        ),
                   ),
-                  onTap: (value) => context.read<RegisterBloc>().add(
-                        RegisterPasswordEvent(value),
-                      ),
-                ),
-                buildTextFieldWidget(
-                  label: StringManager.confirmPW,
-                  iconData: IconlyLight.lock,
-                  isNotPassword: false,
-                  iconButton: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _obscureText = !_obscureText;
-                      });
-                    },
-                    icon: Icon(
-                      _obscureText ? Icons.visibility : Icons.visibility_off,
-                      color: ColorManager.accentDarkYellow,
-                    ),
+                  buildTextFieldWidget(
+                    label: StringManager.emailCaps,
+                    iconData: IconlyLight.message,
+                    onTap: (value) => context.read<RegisterBloc>().add(
+                          RegisterEmailEvent(value),
+                        ),
+                    isNotPassword: true,
                   ),
-                  onTap: (value) => context.read<RegisterBloc>().add(
-                        RegisterConfirmPasswordEvent(value),
+                  buildTextFieldWidget(
+                    label: StringManager.passwordCaps,
+                    iconData: IconlyLight.lock,
+                    isNotPassword: false,
+                    iconButton: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
+                      icon: Icon(
+                        _obscureText ? Icons.visibility : Icons.visibility_off,
+                        color: ColorManager.accentDarkYellow,
                       ),
-                ),
-                heightSpacer20(),
-                registerButton(),
-                heightSpacer20(),
-                alreadyHaveAccSpacer(),
-                heightSpacer20(),
-                goBackToSignInPageButton(),
-              ],
+                    ),
+                    onTap: (value) => context.read<RegisterBloc>().add(
+                          RegisterPasswordEvent(value),
+                        ),
+                  ),
+                  buildTextFieldWidget(
+                    label: StringManager.confirmPW,
+                    iconData: IconlyLight.lock,
+                    isNotPassword: false,
+                    iconButton: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
+                      icon: Icon(
+                        _obscureText ? Icons.visibility : Icons.visibility_off,
+                        color: ColorManager.accentDarkYellow,
+                      ),
+                    ),
+                    onTap: (value) => context.read<RegisterBloc>().add(
+                          RegisterConfirmPasswordEvent(value),
+                        ),
+                  ),
+                  heightSpacer20(),
+                  registerButton(),
+                  heightSpacer20(),
+                  alreadyHaveAccSpacer(),
+                  heightSpacer20(),
+                  goBackToSignInPageButton(),
+                ],
+              ),
             ),
           ),
         );

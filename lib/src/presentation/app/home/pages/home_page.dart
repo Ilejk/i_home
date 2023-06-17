@@ -27,53 +27,56 @@ class HomePage extends StatelessWidget {
               horizontal: PaddingManager.p24.w,
               vertical: PaddingManager.p12.h,
             ),
-            child: Column(
-              children: [
-                const HomePageSmartWeather(),
-                const HeightSpacer(iH: SizeManager.s20),
-                const HomePageSmartSpeaker(),
-                const HeightSpacer(iH: SizeManager.s20),
-                const QuickAccessSpacer(),
-                SizedBox(
-                  height: SizeManager.s170.h,
-                  child: ListView.builder(
-                    itemCount: 5,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      //TODO
-                      return HomeDeviceWidget(
-                        deviceType: 'Smart TV',
-                        deviceName: 'Samsung 56"Neo QLED 4KQN98B',
-                        deviceIcon: ImageManager.homeSmartTv,
-                        onChanged: (switchValue) {
-                          //TODO
-                        },
-                        switchValue: true,
-                      );
-                    },
+            child: SingleChildScrollView(
+              physics: const NeverScrollableScrollPhysics(),
+              child: Column(
+                children: [
+                  const HomePageSmartWeather(),
+                  const HeightSpacer(iH: SizeManager.s20),
+                  const HomePageSmartSpeaker(),
+                  const HeightSpacer(iH: SizeManager.s20),
+                  const QuickAccessSpacer(),
+                  SizedBox(
+                    height: SizeManager.s170.h,
+                    child: ListView.builder(
+                      itemCount: 5,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        //TODO
+                        return HomeDeviceWidget(
+                          deviceType: 'Smart TV',
+                          deviceName: 'Samsung 56"Neo QLED 4KQN98B',
+                          deviceIcon: ImageManager.homeSmartTv,
+                          onChanged: (switchValue) {
+                            //TODO
+                          },
+                          switchValue: true,
+                        );
+                      },
+                    ),
                   ),
-                ),
-                const HeightSpacer(iH: SizeManager.s20),
-                const FavModsSpacer(),
-                const HeightSpacer(iH: SizeManager.s10),
-                SizedBox(
-                  height: SizeManager.s170.h,
-                  child: ListView.builder(
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return FavModesWidget(
-                        iconData: IconlyLight.notification,
-                        modeName: 'Good Monday morning!',
-                        timeSet: '6:00AM',
-                        setUpMode: 'Every Monday',
-                        onSubmit: () {
-                          //TODO
-                        },
-                      );
-                    },
+                  const HeightSpacer(iH: SizeManager.s20),
+                  const FavModsSpacer(),
+                  const HeightSpacer(iH: SizeManager.s10),
+                  SizedBox(
+                    height: SizeManager.s170.h,
+                    child: ListView.builder(
+                      itemCount: 5,
+                      itemBuilder: (context, index) {
+                        return FavModesWidget(
+                          iconData: IconlyLight.notification,
+                          modeName: 'Good Monday morning!',
+                          timeSet: '6:00AM',
+                          setUpMode: 'Every Monday',
+                          onSubmit: () {
+                            //TODO
+                          },
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
