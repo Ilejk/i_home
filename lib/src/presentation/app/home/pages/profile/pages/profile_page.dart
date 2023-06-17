@@ -6,6 +6,7 @@ import 'package:i_home/src/domain/repo/profile_repository.dart';
 import 'package:i_home/src/presentation/app/home/pages/profile/widgets/button_column.dart';
 import 'package:i_home/src/presentation/app/home/pages/profile/widgets/welcome_widget.dart';
 import 'package:i_home/src/presentation/utils/constnants/constants.dart';
+import 'package:i_home/src/presentation/utils/global/global_methods.dart';
 import 'package:i_home/src/presentation/utils/managers/asset_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
@@ -26,11 +27,12 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   String userName = '';
   String imageUrl = '';
+  late Future<void> userDataFuture;
 
   @override
   void initState() {
     super.initState();
-    loadUserData();
+    userDataFuture = loadUserData();
   }
 
   Future<void> loadUserData() async {
@@ -78,52 +80,60 @@ class _ProfilePageState extends State<ProfilePage> {
                 horizontal: PaddingManager.p12.w,
                 vertical: PaddingManager.p24.h,
               ),
-              child: Column(
-                children: [
-                  WelcomeWidget(
-                    userName: userName,
-                    imageUrl: imageUrl == emptyString
-                        ? Image.asset(ImageManager.defaultUserIMG)
-                        : Image.network(imageUrl),
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (context) {
-                          return Container(
-                            height: SizeManager.s200.h,
-                            decoration: BoxDecoration(
-                              color: ColorManager.primaryDarkGrey,
-                            ),
-                            child: Column(
-                              children: [
-                                BottomSheetButton(
-                                  onTap: () {
-                                    ProfileRepository(context: context)
-                                        .handleImagePicking(ImageSource.camera);
-                                    loadUserData();
-                                  },
-                                  title: StringManager.takePhoto,
-                                ),
-                                BottomSheetButton(
-                                  onTap: () {
-                                    ProfileRepository(context: context)
-                                        .handleImagePicking(
-                                            ImageSource.gallery);
-                                    loadUserData();
-                                  },
-                                  title: StringManager.choosePhoto,
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  ),
-                  const HeightSpacer(iH: SizeManager.s20),
-                  const ProfileButtonColumn(),
-                ],
-              ),
+              child: FutureBuilder<void>(
+                  future: userDataFuture,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return GBM.spinkit;
+                    }
+                    return Column(
+                      children: [
+                        WelcomeWidget(
+                          userName: userName,
+                          imageUrl: imageUrl == emptyString
+                              ? Image.asset(ImageManager.defaultUserIMG)
+                              : Image.network(imageUrl),
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return Container(
+                                  height: SizeManager.s200.h,
+                                  decoration: BoxDecoration(
+                                    color: ColorManager.primaryDarkGrey,
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      BottomSheetButton(
+                                        onTap: () {
+                                          ProfileRepository(context: context)
+                                              .handleImagePicking(
+                                                  ImageSource.camera);
+                                          loadUserData();
+                                        },
+                                        title: StringManager.takePhoto,
+                                      ),
+                                      BottomSheetButton(
+                                        onTap: () {
+                                          ProfileRepository(context: context)
+                                              .handleImagePicking(
+                                                  ImageSource.gallery);
+                                          loadUserData();
+                                        },
+                                        title: StringManager.choosePhoto,
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                        const HeightSpacer(iH: SizeManager.s20),
+                        const ProfileButtonColumn(),
+                      ],
+                    );
+                  }),
             ),
           ),
         );

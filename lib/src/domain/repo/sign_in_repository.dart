@@ -42,8 +42,8 @@ class SignInRepository {
           toastInfo(msg: StringManager.notVerified);
           return;
         }
-        GBM.storageService
-            .setString(AppConst.STORAGE_USER_TOKEN_KEY, '12345678');
+        final uid = FirebaseAuth.instance.currentUser!.uid;
+        GBM.storageService.setString(AppConst.STORAGE_USER_TOKEN_KEY, uid);
         navigate;
       } on FirebaseAuthException catch (e) {
         var isUserNotFound = e.code == ErrorCodeString.uNotFound;

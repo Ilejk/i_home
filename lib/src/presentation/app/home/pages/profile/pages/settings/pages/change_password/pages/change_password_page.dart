@@ -48,6 +48,21 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                 ),
               ),
               const HeightSpacer(iH: SizeManager.s20),
+              Padding(
+                padding: EdgeInsets.only(left: PaddingManager.p24.w),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextWidget(
+                    align: TextAlign.left,
+                    text: StringManager.enterOldPW,
+                    style: appTextStyleWidget(
+                      size: FontSize.s15,
+                      color: ColorManager.white,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ),
               buildTextFieldWidget(
                 onTap: (value) => context
                     .read<ChangePasswordBloc>()
@@ -63,6 +78,21 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   icon: Icon(
                     _obscureText ? Icons.visibility : Icons.visibility_off,
                     color: ColorManager.accentDarkYellow,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: PaddingManager.p24.w),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextWidget(
+                    align: TextAlign.left,
+                    text: StringManager.enterNewPW,
+                    style: appTextStyleWidget(
+                      size: FontSize.s15,
+                      color: ColorManager.white,
+                      fontWeight: FontWeight.normal,
+                    ),
                   ),
                 ),
               ),
@@ -135,7 +165,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
         width: SizeManager.s345.w,
         child: TextField(
           obscureText: _obscureText,
-          keyboardType: TextInputType.emailAddress,
           onChanged: onTap,
           style: appTextStyleWidget(
             size: FontSize.s20,

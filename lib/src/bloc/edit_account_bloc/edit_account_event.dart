@@ -13,3 +13,8 @@ class EditAccountNewNameEvent extends EditAccountEvent {
   final String newName;
   const EditAccountNewNameEvent(this.newName);
 }
+
+class EditAccountPasswordEvent extends EditAccountEvent {
+  final String password;
+  const EditAccountPasswordEvent(this.password);
+}

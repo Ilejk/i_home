@@ -19,11 +19,15 @@ class StringManager {
   static const String signIn = 'Sign in';
   static const String register = 'Register';
   static const String forgotPW = 'Forgot password?';
+  static const String enterOldPW = 'Enter old password';
+  static const String enterNewPW = 'Enter new password';
   static const String createAcc = 'Create an account';
   static const String startNow = 'Start your smart life';
   static const String alreadyHaverACC = 'Already have an account?';
   static const String confirmPW = 'CONFIRM PASSWORD';
   static const String reset = 'Reset';
+  static const String update = 'Update';
+  static const String reAuthWithpass = 'Please provide your password';
   static const String forgotPWTitile = 'Forgot your password?';
   static const String forgotPWSubtitle =
       'Enter your email\nto reset your password';
@@ -31,6 +35,8 @@ class StringManager {
       'New password is the same as an old one';
   static const String oldPWCaps = 'OLD PASSWORD';
   static const String newPWCaps = 'NEW PASSWORD';
+  static const String updateEmail = 'Update your email';
+  static const String updateUserName = 'Update your user name';
 
 //HOME
   static const String smartSpeaker = 'Smart speaker';
@@ -50,6 +56,8 @@ class StringManager {
   static const String nameMissing = 'You need to provide your full name';
   static const String repeatPW = 'Please repeat your password';
   static const String pwAreDiff = 'Passwords do not match';
+  static const String accountInfoHasBeenUpdated =
+      'Your account information has been updated';
   static const String passwordChanged = 'Password has been changed';
   static const String checkEmailtoVerify =
       'Check your email to verify your account';
@@ -85,6 +93,7 @@ class StringManager {
   static const String cancel = 'Cancel';
   static const String takePhoto = 'Take Photo';
   static const String choosePhoto = 'Choose Photo';
+  static const String updateAccInfo = 'Update your\naccount information';
 }
 
 class ErrorCodeString {
