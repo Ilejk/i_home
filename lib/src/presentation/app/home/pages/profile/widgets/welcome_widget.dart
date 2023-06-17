@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/presentation/utils/managers/asset_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
@@ -13,8 +12,12 @@ class WelcomeWidget extends StatelessWidget {
   const WelcomeWidget({
     super.key,
     required this.onTap,
+    required this.imageUrl,
+    required this.userName,
   });
   final VoidCallback onTap;
+  final Image imageUrl;
+  final String userName;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,11 +45,7 @@ class WelcomeWidget extends StatelessWidget {
               onTap: onTap,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(SizeManager.s50),
-                child: Image.asset(
-                  ImageManager.homeSpotify,
-                  //TODO
-                  fit: BoxFit.fill,
-                ),
+                child: imageUrl,
               ),
             ),
           ),
@@ -64,8 +63,7 @@ class WelcomeWidget extends StatelessWidget {
                 ),
               ),
               TextWidget(
-                //TODO
-                text: 'Adrian Skiba',
+                text: userName,
                 style: appTextStyleWidget(
                   size: FontSize.s17,
                   color: ColorManager.white,

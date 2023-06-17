@@ -1,14 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_home/src/bloc/profile_bloc/profile_bloc.dart';
 import 'package:i_home/src/domain/repo/profile_repository.dart';
 import 'package:i_home/src/presentation/app/home/pages/profile/widgets/button_column.dart';
-import 'package:i_home/src/presentation/app/home/pages/profile/widgets/profile_button.dart';
 import 'package:i_home/src/presentation/app/home/pages/profile/widgets/welcome_widget.dart';
-import 'package:i_home/src/presentation/router/router.dart';
-import 'package:i_home/src/presentation/utils/global/global_methods.dart';
+import 'package:i_home/src/presentation/utils/constnants/constants.dart';
+import 'package:i_home/src/presentation/utils/managers/asset_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
@@ -26,6 +24,25 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  String userName = '';
+  String imageUrl = '';
+
+  @override
+  void initState() {
+    super.initState();
+    loadUserData();
+  }
+
+  Future<void> loadUserData() async {
+    final repository = ProfileRepository(context: context);
+    userName = await repository.handleSetUserName();
+    imageUrl = await repository.handleSetImageUrl();
+    final bloc = context.read<ProfileBloc>();
+    bloc.add(SetUserName(userName));
+    bloc.add(PickImageEvent(imageUrl));
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileBloc, ProfileState>(
@@ -64,6 +81,10 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Column(
                 children: [
                   WelcomeWidget(
+                    userName: userName,
+                    imageUrl: imageUrl == emptyString
+                        ? Image.asset(ImageManager.defaultUserIMG)
+                        : Image.network(imageUrl),
                     onTap: () {
                       showModalBottomSheet(
                         context: context,
@@ -79,6 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   onTap: () {
                                     ProfileRepository(context: context)
                                         .handleImagePicking(ImageSource.camera);
+                                    loadUserData();
                                   },
                                   title: StringManager.takePhoto,
                                 ),
@@ -87,6 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ProfileRepository(context: context)
                                         .handleImagePicking(
                                             ImageSource.gallery);
+                                    loadUserData();
                                   },
                                   title: StringManager.choosePhoto,
                                 ),

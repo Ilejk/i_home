@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
                 const HeightSpacer(iH: SizeManager.s20),
                 const QuickAccessSpacer(),
                 SizedBox(
-                  height: SizeManager.s150.h,
+                  height: SizeManager.s170.h,
                   child: ListView.builder(
                     itemCount: 5,
                     scrollDirection: Axis.horizontal,
@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
                 const FavModsSpacer(),
                 const HeightSpacer(iH: SizeManager.s10),
                 SizedBox(
-                  height: SizeManager.s150.h,
+                  height: SizeManager.s170.h,
                   child: ListView.builder(
                     itemCount: 5,
                     itemBuilder: (context, index) {

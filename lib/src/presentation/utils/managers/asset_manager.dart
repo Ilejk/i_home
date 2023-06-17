@@ -20,4 +20,6 @@ class ImageManager {
   static const homeLightBulb = '$imagePath/light-bulb.png';
   static const homeSmartTv = '$imagePath/smart-tv.png';
   static const homeTurnOn = '$imagePath/turn_on.png';
+  //PROFILE
+  static const defaultUserIMG = '$imagePath/defaultUserIMG.png';
 }
