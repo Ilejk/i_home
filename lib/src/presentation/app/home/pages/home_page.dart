@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
                   const FavModsSpacer(),
                   const HeightSpacer(iH: SizeManager.s10),
                   SizedBox(
-                    height: SizeManager.s170.h,
+                    height: SizeManager.s190.h,
                     child: ListView.builder(
                       itemCount: 5,
                       itemBuilder: (context, index) {

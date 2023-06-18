@@ -17,6 +17,8 @@ class StringManager {
   static const String passwordCaps = 'PASSWORD';
   static const String nameCaps = 'NAME';
   static const String signIn = 'Sign in';
+  static const String errorUpdatingEmail = 'Error updating Email';
+  static const String errorupdatingStore = 'Error updating DataBase';
   static const String register = 'Register';
   static const String forgotPW = 'Forgot password?';
   static const String enterOldPW = 'Enter old password';

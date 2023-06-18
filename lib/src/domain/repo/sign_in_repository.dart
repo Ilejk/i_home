@@ -11,51 +11,49 @@ class SignInRepository {
   final BuildContext context;
 
   const SignInRepository({required this.context});
+
   Future<void> handleSignIn(VoidCallback navigate) async {
     try {
       final state = context.read<SignInBloc>().state;
       String emailAddress = state.email;
       String password = state.password;
-      var isPasswordEmpty = password.isEmpty;
-      var isEmailEmpty = emailAddress.isEmpty;
-      if (isEmailEmpty) {
+
+      if (emailAddress.isEmpty) {
         toastInfo(msg: StringManager.emailMissing);
         return;
       }
-      if (isPasswordEmpty) {
+
+      if (password.isEmpty) {
         toastInfo(msg: StringManager.passwordMissing);
         return;
       }
-      try {
-        final credential =
-            await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailAddress,
-          password: password,
-        );
-        var doesUserExist = credential.user == null;
-        var isUserNotVerified = !credential.user!.emailVerified;
-        if (doesUserExist) {
-          toastInfo(msg: StringManager.accDoesNotExist);
-          return;
-        }
-        if (isUserNotVerified) {
-          toastInfo(msg: StringManager.notVerified);
-          return;
-        }
-        final uid = FirebaseAuth.instance.currentUser!.uid;
-        GBM.storageService.setString(AppConst.STORAGE_USER_TOKEN_KEY, uid);
-        navigate;
-      } on FirebaseAuthException catch (e) {
-        var isUserNotFound = e.code == ErrorCodeString.uNotFound;
-        var isPasswordWrong = e.code == ErrorCodeString.wrongPW;
-        var isEmailInvalid = e.code == ErrorCodeString.invalidEmail;
-        if (isUserNotFound) {
-          toastInfo(msg: StringManager.uNotFoundForThisEmail);
-        } else if (isPasswordWrong) {
-          toastInfo(msg: StringManager.invalidPW);
-        } else if (isEmailInvalid) {
-          toastInfo(msg: StringManager.invalidEmail);
-        }
+
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailAddress,
+        password: password,
+      );
+
+      if (credential.user == null) {
+        toastInfo(msg: StringManager.accDoesNotExist);
+        return;
+      }
+
+      if (!credential.user!.emailVerified) {
+        toastInfo(msg: StringManager.notVerified);
+        return;
+      }
+
+      final uid = FirebaseAuth.instance.currentUser!.uid;
+      GBM.storageService.setString(AppConst.STORAGE_USER_TOKEN_KEY, uid);
+
+      navigate();
+    } on FirebaseAuthException catch (e) {
+      if (e.code == ErrorCodeString.uNotFound) {
+        toastInfo(msg: StringManager.uNotFoundForThisEmail);
+      } else if (e.code == ErrorCodeString.wrongPW) {
+        toastInfo(msg: StringManager.invalidPW);
+      } else if (e.code == ErrorCodeString.invalidEmail) {
+        toastInfo(msg: StringManager.invalidEmail);
       }
     } catch (e) {
       toastInfo(msg: StringManager.netError);

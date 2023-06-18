@@ -37,12 +37,12 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Future<void> loadUserData() async {
     final repository = ProfileRepository(context: context);
-    userName = await repository.handleSetUserName();
-    imageUrl = await repository.handleSetImageUrl();
-    final bloc = context.read<ProfileBloc>();
-    bloc.add(SetUserName(userName));
-    bloc.add(PickImageEvent(imageUrl));
-    setState(() {});
+    String newUserName = await repository.handleSetUserName();
+    String newImageUrl = await repository.handleSetImageUrl();
+    setState(() {
+      userName = newUserName;
+      imageUrl = newImageUrl;
+    });
   }
 
   @override
@@ -91,8 +91,14 @@ class _ProfilePageState extends State<ProfilePage> {
                         WelcomeWidget(
                           userName: userName,
                           imageUrl: imageUrl == emptyString
-                              ? Image.asset(ImageManager.defaultUserIMG)
-                              : Image.network(imageUrl),
+                              ? Image.asset(
+                                  ImageManager.defaultUserIMG,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.network(
+                                  imageUrl,
+                                  fit: BoxFit.cover,
+                                ),
                           onTap: () {
                             showModalBottomSheet(
                               context: context,
@@ -105,20 +111,30 @@ class _ProfilePageState extends State<ProfilePage> {
                                   child: Column(
                                     children: [
                                       BottomSheetButton(
-                                        onTap: () {
-                                          ProfileRepository(context: context)
+                                        onTap: () async {
+                                          GBM.pop(context: context);
+                                          context
+                                              .read<ProfileBloc>()
+                                              .add(PickImageEvent(imageUrl));
+                                          await ProfileRepository(
+                                                  context: context)
                                               .handleImagePicking(
                                                   ImageSource.camera);
-                                          loadUserData();
+                                          await loadUserData();
                                         },
                                         title: StringManager.takePhoto,
                                       ),
                                       BottomSheetButton(
-                                        onTap: () {
-                                          ProfileRepository(context: context)
+                                        onTap: () async {
+                                          GBM.pop(context: context);
+                                          context
+                                              .read<ProfileBloc>()
+                                              .add(PickImageEvent(imageUrl));
+                                          await ProfileRepository(
+                                                  context: context)
                                               .handleImagePicking(
                                                   ImageSource.gallery);
-                                          loadUserData();
+                                          await loadUserData();
                                         },
                                         title: StringManager.choosePhoto,
                                       ),

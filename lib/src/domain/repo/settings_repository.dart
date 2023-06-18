@@ -19,19 +19,17 @@ class SettingsRepository {
       String oldPassword = state.oldPassword;
       String newPassword = state.newPassword;
 
-      var isOldPasswordEmpty = oldPassword.isEmpty;
-      var isNewPasswordEmpty = newPassword.isEmpty;
-      var isNewPasswordDifferentFromOldPassword = newPassword == oldPassword;
-
-      if (isOldPasswordEmpty) {
-        toastInfo(msg: StringManager.emailMissing);
-        return;
-      }
-      if (isNewPasswordEmpty) {
+      if (oldPassword.isEmpty) {
         toastInfo(msg: StringManager.passwordMissing);
         return;
       }
-      if (isNewPasswordDifferentFromOldPassword) {
+
+      if (newPassword.isEmpty) {
+        toastInfo(msg: StringManager.passwordMissing);
+        return;
+      }
+
+      if (newPassword == oldPassword) {
         toastInfo(msg: StringManager.theSamePassword);
         return;
       }
@@ -49,8 +47,7 @@ class SettingsRepository {
         toastInfo(msg: StringManager.passwordChanged);
         navigate();
       } on FirebaseAuthException catch (e) {
-        var isPasswordWeak = e.code == ErrorCodeString.weakPW;
-        if (isPasswordWeak) {
+        if (e.code == ErrorCodeString.weakPW) {
           toastInfo(msg: StringManager.weakPw);
         }
       }
@@ -72,9 +69,7 @@ class SettingsRepository {
             await ProfileRepository(context: context).handleSetUserName();
         var currentUser = FirebaseAuth.instance.currentUser;
 
-        var isEmailDifferent = oldEmail != newEmailAddress;
-        var isEmailNotEmpty = newEmailAddress != emptyString;
-        if (isEmailDifferent && isEmailNotEmpty) {
+        if (oldEmail != newEmailAddress && newEmailAddress.isNotEmpty) {
           try {
             var credential = EmailAuthProvider.credential(
                 email: oldEmail!, password: password);
@@ -84,7 +79,7 @@ class SettingsRepository {
               currentUser.updateEmail(newEmailAddress);
             });
           } catch (e) {
-            print('Error updating email: $e');
+            toastInfo(msg: StringManager.errorUpdatingEmail);
           }
 
           try {
@@ -95,12 +90,11 @@ class SettingsRepository {
               'email': newEmailAddress,
             });
           } catch (e) {
-            print('Error updating Firestore: $e');
+            toastInfo(msg: StringManager.errorupdatingStore);
           }
         }
-        var isPasswordNotEmpty = name != emptyString;
-        var isNameDifferent = oldUserName != name;
-        if (isNameDifferent && isPasswordNotEmpty) {
+
+        if (oldUserName != name && name.isNotEmpty) {
           await FirebaseFirestore.instance
               .collection('users')
               .doc(currentUser!.uid)
@@ -113,9 +107,7 @@ class SettingsRepository {
         toastInfo(msg: StringManager.accountInfoHasBeenUpdated);
         navigate();
       } on FirebaseAuthException catch (e) {
-        print(e);
-        var isPasswordWeak = e.code == ErrorCodeString.weakPW;
-        if (isPasswordWeak) {
+        if (e.code == ErrorCodeString.weakPW) {
           toastInfo(msg: StringManager.weakPw);
         }
       }
@@ -126,29 +118,29 @@ class SettingsRepository {
 
   Future<String> getUserName() async {
     try {
-      final currentUseruid = FirebaseAuth.instance.currentUser!.uid;
-      DocumentSnapshot userDataSnapShot = await FirebaseFirestore.instance
+      final currentUserUID = FirebaseAuth.instance.currentUser!.uid;
+      DocumentSnapshot userDataSnapshot = await FirebaseFirestore.instance
           .collection('users')
-          .doc(currentUseruid)
+          .doc(currentUserUID)
           .get();
-      return userDataSnapShot.get('name');
+      return userDataSnapshot.get('name') as String;
     } catch (e) {
       toastInfo(msg: e.toString());
-      return '';
+      return emptyString;
     }
   }
 
   Future<String> getEmail() async {
     try {
-      final currentUseruid = FirebaseAuth.instance.currentUser!.uid;
-      DocumentSnapshot userDataSnapShot = await FirebaseFirestore.instance
+      final currentUserUID = FirebaseAuth.instance.currentUser!.uid;
+      DocumentSnapshot userDataSnapshot = await FirebaseFirestore.instance
           .collection('users')
-          .doc(currentUseruid)
+          .doc(currentUserUID)
           .get();
-      return userDataSnapShot.get('email');
+      return userDataSnapshot.get('email') as String;
     } catch (e) {
       toastInfo(msg: e.toString());
-      return '';
+      return emptyString;
     }
   }
 }

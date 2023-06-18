@@ -10,6 +10,7 @@ class RegisterRepository {
   final BuildContext context;
 
   const RegisterRepository({required this.context});
+
   Future<void> handleEmailRegister(VoidCallback navigate) async {
     try {
       final state = context.read<RegisterBloc>().state;
@@ -17,63 +18,60 @@ class RegisterRepository {
       String password = state.password;
       String name = state.name;
       String confirmPassword = state.confirmPassword;
-      var isEmailEmpty = emailAddress.isEmpty;
-      var isPasswordEmpty = password.isEmpty;
-      var isNameEmpty = name.isEmpty;
-      var isConfirmPasswordEmpty = confirmPassword.isEmpty;
-      var doesPasswordMatch = password != confirmPassword;
-      if (isEmailEmpty) {
+
+      if (emailAddress.isEmpty) {
         toastInfo(msg: StringManager.emailMissing);
         return;
       }
-      if (isPasswordEmpty) {
+
+      if (password.isEmpty) {
         toastInfo(msg: StringManager.passwordMissing);
         return;
       }
-      if (isNameEmpty) {
+
+      if (name.isEmpty) {
         toastInfo(msg: StringManager.nameMissing);
         return;
       }
-      if (isConfirmPasswordEmpty) {
+
+      if (confirmPassword.isEmpty) {
         toastInfo(msg: StringManager.repeatPW);
         return;
       }
-      if (doesPasswordMatch) {
-        toastInfo(msg: StringManager.pwAreDiff);
-      }
-//TODO!!!!
-      try {
-        final credential =
-            await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailAddress,
-          password: password,
-        );
 
-        var isThereAUser = credential.user != null;
-        if (isThereAUser) {
-          await credential.user?.sendEmailVerification();
-          await credential.user?.updateDisplayName(name);
-          toastInfo(msg: StringManager.checkEmailtoVerify);
-          await FirebaseFirestore.instance
-              .collection('users')
-              .doc(credential.user!.uid)
-              .set({
-            'email': emailAddress,
-            'name': name,
-          });
-          navigate();
-        }
-      } on FirebaseAuthException catch (e) {
-        var isPasswordWeak = e.code == ErrorCodeString.weakPW;
-        var isEmailInUse = e.code == ErrorCodeString.emailInUse;
-        var isEmailInvalid = e.code == ErrorCodeString.invalidEmail;
-        if (isPasswordWeak) {
-          toastInfo(msg: StringManager.weakPw);
-        } else if (isEmailInUse) {
-          toastInfo(msg: StringManager.emailInUse);
-        } else if (isEmailInvalid) {
-          toastInfo(msg: StringManager.invalidEmail);
-        }
+      if (password != confirmPassword) {
+        toastInfo(msg: StringManager.pwAreDiff);
+        return;
+      }
+
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailAddress,
+        password: password,
+      );
+
+      if (credential.user != null) {
+        await credential.user?.sendEmailVerification();
+        await credential.user?.updateDisplayName(name);
+        toastInfo(msg: StringManager.checkEmailtoVerify);
+
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(credential.user!.uid)
+            .set({
+          'email': emailAddress,
+          'name': name,
+        });
+
+        navigate();
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == ErrorCodeString.weakPW) {
+        toastInfo(msg: StringManager.weakPw);
+      } else if (e.code == ErrorCodeString.emailInUse) {
+        toastInfo(msg: StringManager.emailInUse);
+      } else if (e.code == ErrorCodeString.invalidEmail) {
+        toastInfo(msg: StringManager.invalidEmail);
       }
     } catch (e) {
       toastInfo(msg: StringManager.netError);

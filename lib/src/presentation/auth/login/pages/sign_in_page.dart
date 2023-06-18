@@ -194,7 +194,7 @@ class _SignInPageState extends State<SignInPage> {
   GestureDetector signInButton() {
     return GestureDetector(
       onTap: () => SignInRepository(context: context).handleSignIn(
-        GBM.pushAndReplaceNamed(
+        () => GBM.pushAndReplaceNamed(
           context: context,
           routeName: Routes.mainRoute,
         ),

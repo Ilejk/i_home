@@ -29,7 +29,7 @@ class FavModesWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: PaddingManager.p12.h),
       child: Container(
-        height: SizeManager.s150.h,
+        height: SizeManager.s170.h,
         width: SizeManager.deviceWidth,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(SizeManager.s20),

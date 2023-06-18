@@ -198,7 +198,7 @@ class _RegisterPageState extends State<RegisterPage> {
   GestureDetector registerButton() {
     return GestureDetector(
       onTap: () => RegisterRepository(context: context).handleEmailRegister(
-        GBM.pop(context: context),
+        () => GBM.pop(context: context),
       ),
       child: Container(
         width: SizeManager.s345.w,
