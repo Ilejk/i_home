@@ -91,6 +91,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const EditAccountPage());
       case Routes.changePasswordRoute:
         return MaterialPageRoute(builder: (_) => const ChangePasswordPage());
+
       default:
         return undefinedRoute();
     }
