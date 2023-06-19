@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../utils/managers/asset_manager.dart';
 import '../../../utils/managers/color_manager.dart';
 import '../../../utils/managers/font_manager.dart';
 import '../../../utils/managers/size_manager.dart';

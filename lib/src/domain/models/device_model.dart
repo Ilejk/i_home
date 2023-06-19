@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class DeviceModel {
   final String type;
   final String name;
