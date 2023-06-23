@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_home/src/bloc/weather_bloc/weather_bloc_bloc.dart';
 import 'package:i_home/src/presentation/utils/global/global_methods.dart';
-import 'package:i_home/src/presentation/utils/managers/asset_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
@@ -24,7 +23,7 @@ class _HomePageSmartWeatherState extends State<HomePageSmartWeather> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<WeatherBlocBloc>().add(WeatherBlocEvent());
+      context.read<WeatherBlocBloc>().add(const WeatherBlocEvent());
     });
   }
 
@@ -35,7 +34,7 @@ class _HomePageSmartWeatherState extends State<HomePageSmartWeather> {
         if (state.isLoading) {
           return GBM.spinkit;
         } else if (state.error.isNotEmpty) {
-          return Text('Error');
+          return const Text('Error');
         }
         return Container(
           width: SizeManager.deviceWidth,
