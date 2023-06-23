@@ -6,13 +6,13 @@ import 'package:i_home/src/domain/repo/settings_repository.dart';
 import 'package:i_home/src/presentation/utils/global/global_methods.dart';
 import 'package:iconly/iconly.dart';
 
-import '../../../../../../../../../utils/managers/color_manager.dart';
-import '../../../../../../../../../utils/managers/font_manager.dart';
-import '../../../../../../../../../utils/managers/size_manager.dart';
-import '../../../../../../../../../utils/managers/string_manager.dart';
-import '../../../../../../../../../widgets/app_textstyle_widget.dart';
-import '../../../../../../../../../widgets/spacers.dart';
-import '../../../../../../../../../widgets/text_widget.dart';
+import '../../../../../../../utils/managers/color_manager.dart';
+import '../../../../../../../utils/managers/font_manager.dart';
+import '../../../../../../../utils/managers/size_manager.dart';
+import '../../../../../../../utils/managers/string_manager.dart';
+import '../../../../../../../widgets/app_textstyle_widget.dart';
+import '../../../../../../../widgets/spacers.dart';
+import '../../../../../../../widgets/text_widget.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({super.key});

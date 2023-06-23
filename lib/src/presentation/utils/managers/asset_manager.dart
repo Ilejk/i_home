@@ -23,4 +23,11 @@ class ImageManager {
   static const homeSmartFridge = '$imagePath/refrigerator.png';
   //PROFILE
   static const defaultUserIMG = '$imagePath/defaultUserIMG.png';
+  //WEATHER
+  static const wCloudy = '$imagePath/cloudy.png';
+  static const wRainy = '$imagePath/rainy.png';
+  static const wSnowy = '$imagePath/snow.png';
+  static const wSunnyAndCloudy = '$imagePath/sunCloud.png';
+  static const wSunny = '$imagePath/sunny.png';
+  static const wWindy = '$imagePath/wind.png';
 }

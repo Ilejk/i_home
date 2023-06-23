@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_home/src/bloc/bottom_bar_bloc/bottom_bar_bloc_bloc.dart';
 import 'package:i_home/src/presentation/app/devices/pages/devices_page.dart';
 import 'package:i_home/src/presentation/app/home/pages/home_page.dart';
+import 'package:i_home/src/presentation/app/profile/pages/profile_page.dart';
 import 'package:i_home/src/presentation/app/main/widgets/custom_painter.dart';
 import 'package:i_home/src/presentation/app/modes/pages/modes_page.dart';
-import 'package:i_home/src/presentation/app/schedule/pages/schedule_page.dart';
 import 'package:i_home/src/presentation/router/router.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
@@ -49,7 +49,7 @@ class _MainPageState extends State<MainPage> {
       case 2:
         return const ModesPage();
       case 3:
-        return const SchedulePage();
+        return const ProfilePage();
       default:
         return Container();
     }
@@ -91,7 +91,7 @@ class _MainPageState extends State<MainPage> {
     int isHome = 0;
     int isDevices = 1;
     int isModes = 2;
-    int isSchedule = 3;
+    int isProfile = 3;
     return SizedBox(
       width: size.width,
       height: SizeManager.s70.h,
@@ -126,10 +126,10 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
           IconButton(
-            onPressed: () => changeNavBarPage(isSchedule),
+            onPressed: () => changeNavBarPage(isProfile),
             icon: Icon(
-              IconlyLight.calendar,
-              color: _getIconColor(isSchedule),
+              IconlyLight.profile,
+              color: _getIconColor(isProfile),
               size: SizeManager.s30,
             ),
           ),

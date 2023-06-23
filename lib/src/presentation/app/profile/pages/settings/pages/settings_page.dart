@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/presentation/app/home/pages/profile/pages/settings/widgets/settings_button.dart';
-import 'package:i_home/src/presentation/app/home/pages/profile/pages/settings/widgets/title_spacer.dart';
+import 'package:i_home/src/presentation/app/profile/pages/settings/widgets/settings_button.dart';
+import 'package:i_home/src/presentation/app/profile/pages/settings/widgets/title_spacer.dart';
 import 'package:i_home/src/presentation/router/router.dart';
 import 'package:i_home/src/presentation/utils/constnants/constants.dart';
 import 'package:i_home/src/presentation/utils/global/global_methods.dart';

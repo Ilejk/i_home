@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:i_home/src/bloc/device_bloc/device_bloc.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 
 class DevicesPage extends StatefulWidget {
