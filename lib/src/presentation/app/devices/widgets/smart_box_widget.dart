@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,9 +27,9 @@ class SmartBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(PaddingManager.p12),
+      padding: const EdgeInsets.all(PaddingManager.p5),
       child: Container(
-        height: SizeManager.s150.h,
+        height: SizeManager.s100.h,
         width: SizeManager.s100.w,
         decoration: BoxDecoration(
           color: ColorManager.secondaryDarkGrey,
@@ -37,8 +39,8 @@ class SmartBoxWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SizedBox(
-              height: SizeManager.s80.h,
-              child: Image.network(
+              height: SizeManager.s65.h,
+              child: Image.asset(
                 image,
                 color: ColorManager.white,
               ),
@@ -51,23 +53,27 @@ class SmartBoxWidget extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextWidget(
-                        text: name,
-                        align: TextAlign.left,
-                        style: appTextStyleWidget(
-                          size: FontSize.s10,
-                          color: ColorManager.white,
-                          fontWeight: FontWeight.normal,
+                      SizedBox(
+                        width: SizeManager.s70.w,
+                        child: TextWidget(
+                          text: name,
+                          maxLines: 2,
+                          align: TextAlign.left,
+                          style: appTextStyleWidget(
+                            size: FontSize.s15,
+                            color: ColorManager.white,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                       ),
                       SizedBox(
-                        width: SizeManager.s80.w,
+                        width: SizeManager.s70.w,
                         child: TextWidget(
                           maxLines: 2,
                           align: TextAlign.left,
                           text: type,
                           style: appTextStyleWidget(
-                            size: FontSize.s10,
+                            size: FontSize.s12,
                             color: ColorManager.white54,
                             fontWeight: FontWeight.normal,
                           ),
@@ -75,11 +81,14 @@ class SmartBoxWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  CupertinoSwitch(
-                    activeColor: ColorManager.accentDarkYellow,
-                    trackColor: ColorManager.accentDarkGrey,
-                    value: isOnValue,
-                    onChanged: onChaned,
+                  Transform.rotate(
+                    angle: pi / 2,
+                    child: CupertinoSwitch(
+                      activeColor: ColorManager.accentDarkYellow,
+                      trackColor: ColorManager.accentDarkGrey,
+                      value: isOnValue,
+                      onChanged: onChaned,
+                    ),
                   ),
                 ],
               ),
