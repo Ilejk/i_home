@@ -30,4 +30,5 @@ class ImageManager {
   static const wSunnyAndCloudy = '$imagePath/sunCloud.png';
   static const wSunny = '$imagePath/sunny.png';
   static const wWindy = '$imagePath/wind.png';
+  static const wStormy = '$imagePath/storm.png';
 }
