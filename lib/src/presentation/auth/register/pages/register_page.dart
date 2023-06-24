@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/bloc/register_bloc/register_bloc.dart';
+import 'package:i_home/src/domain/auth/register_bloc/register_bloc.dart';
 import 'package:i_home/src/domain/repo/register_repository.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/font_manager.dart';

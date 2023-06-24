@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/bloc/on_boarding_bloc/on_boarding_bloc_bloc.dart';
+import 'package:i_home/src/domain/core/on_boarding_bloc/on_boarding_bloc_bloc.dart';
 import 'package:i_home/src/presentation/app/on_boarding/widgets/on_boarding_page_column.dart';
 import 'package:i_home/src/presentation/app/on_boarding/widgets/photo_type_grids.dart';
 import 'package:i_home/src/presentation/router/router.dart';

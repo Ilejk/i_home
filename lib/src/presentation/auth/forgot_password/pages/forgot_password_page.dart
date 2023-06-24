@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/bloc/forgot_password_bloc/forgot_password_bloc.dart';
+import 'package:i_home/src/domain/auth/forgot_password_bloc/forgot_password_bloc.dart';
 import 'package:i_home/src/domain/repo/forgot_password_repository.dart';
 import 'package:i_home/src/presentation/utils/global/global_methods.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';

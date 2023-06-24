@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:i_home/src/bloc/sign_in_bloc/sign_in_bloc.dart';
+import 'package:i_home/src/domain/auth/sign_in_bloc/sign_in_bloc.dart';
 import 'package:i_home/src/presentation/utils/constnants/constants.dart';
 import 'package:i_home/src/presentation/utils/global/global_methods.dart';
 import 'package:i_home/src/presentation/utils/managers/string_manager.dart';

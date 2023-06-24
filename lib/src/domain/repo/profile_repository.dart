@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:i_home/src/bloc/profile_bloc/profile_bloc.dart';
+import 'package:i_home/src/domain/core/profile_bloc/profile_bloc.dart';
 import 'package:i_home/src/presentation/utils/constnants/constants.dart';
 import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
 import 'package:i_home/src/presentation/widgets/flutter_toast.dart';

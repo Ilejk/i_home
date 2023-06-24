@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:i_home/src/bloc/change_password/change_password_bloc.dart';
-import 'package:i_home/src/bloc/edit_account_bloc/edit_account_bloc.dart';
+import 'package:i_home/src/domain/auth/change_password/change_password_bloc.dart';
+import 'package:i_home/src/domain/core/edit_account_bloc/edit_account_bloc.dart';
 import 'package:i_home/src/domain/repo/profile_repository.dart';
 import 'package:i_home/src/presentation/utils/constnants/constants.dart';
 

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:i_home/src/bloc/forgot_password_bloc/forgot_password_bloc.dart';
+import 'package:i_home/src/domain/auth/forgot_password_bloc/forgot_password_bloc.dart';
 
 import '../../presentation/utils/managers/string_manager.dart';
 import '../../presentation/widgets/flutter_toast.dart';

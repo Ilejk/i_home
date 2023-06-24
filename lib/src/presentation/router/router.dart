@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:i_home/src/presentation/app/home/pages/device_detail_page.dart';
 import 'package:i_home/src/presentation/app/profile/pages/settings/pages/change_password/pages/change_password_page.dart';
 import 'package:i_home/src/presentation/app/profile/pages/settings/pages/edit_account/pages/edit_account_page.dart';
 import 'package:i_home/src/presentation/auth/auth/pages/auth_page.dart';
@@ -40,10 +41,13 @@ class Routes {
   static const String paymentRoute = '/paymentRoute';
   static const String editAccountRoute = '/editAccountRoute';
   static const String changePasswordRoute = '/changePasswordRoute';
+  static const String deviceDetailRoute = '/deviceDetailRoute';
 }
 
 class RouteGenerator {
-  static Route<dynamic> getRoute(RouteSettings routeSettings) {
+  static Route<dynamic> getRoute(
+    RouteSettings routeSettings,
+  ) {
     switch (routeSettings.name) {
       case Routes.boardingRoute:
         return MaterialPageRoute(builder: (_) => const BoardingPage());
@@ -61,7 +65,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SpeakPage());
       case Routes.modesRoute:
         return MaterialPageRoute(builder: (_) => const ModesPage());
-
+      case Routes.deviceDetailRoute:
+        return MaterialPageRoute(builder: (_) => const DeviceDetailPage());
       case Routes.registerRoute:
         return MaterialPageRoute(builder: (_) => const RegisterPage());
       case Routes.forgotPasswordRoute:

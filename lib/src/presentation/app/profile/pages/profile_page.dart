@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/bloc/profile_bloc/profile_bloc.dart';
+import 'package:i_home/src/domain/core/profile_bloc/profile_bloc.dart';
 import 'package:i_home/src/domain/repo/profile_repository.dart';
 import 'package:i_home/src/presentation/app/profile/widgets/button_column.dart';
 import 'package:i_home/src/presentation/app/profile/widgets/welcome_widget.dart';

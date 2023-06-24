@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/bloc/device_bloc/device_bloc.dart';
-import 'package:i_home/src/presentation/app/devices/widgets/smart_box_widget.dart';
+import 'package:i_home/src/domain/core/device_bloc/device_bloc.dart';
+import 'package:i_home/src/presentation/app/home/widgets/smart_box_widget.dart';
 import 'package:i_home/src/presentation/app/home/widgets/home_page_smart_speaker.dart';
 import 'package:i_home/src/presentation/app/home/widgets/home_page_smart_weather.dart';
+import 'package:i_home/src/presentation/router/router.dart';
+import 'package:i_home/src/presentation/utils/global/global_methods.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/list_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
@@ -52,11 +54,16 @@ class HomePage extends StatelessWidget {
                               type: ListManager.deviceList[index][1],
                               image: ListManager.deviceList[index][2],
                               isOnValue: ListManager.deviceList[index][3],
+                              showSwitch: ListManager.deviceList[index][4],
                               onChaned: (value) {
                                 context
                                     .read<DeviceBloc>()
                                     .add(SwitchValueEvent(index, value));
                               },
+                              onTap: () => GBM.pushNamed(
+                                context: context,
+                                routeName: Routes.deviceDetailRoute,
+                              ),
                             );
                           },
                         ),

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_home/src/bloc/bottom_bar_bloc/bottom_bar_bloc_bloc.dart';
+import 'package:i_home/src/domain/core/bottom_bar_bloc/bottom_bar_bloc_bloc.dart';
 import 'package:i_home/src/presentation/app/devices/pages/devices_page.dart';
 import 'package:i_home/src/presentation/app/home/pages/home_page.dart';
 import 'package:i_home/src/presentation/app/profile/pages/profile_page.dart';
