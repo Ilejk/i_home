@@ -120,6 +120,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         height: SizeManager.s50.h,
         width: SizeManager.s345.w,
         child: TextField(
+          autocorrect: false,
           keyboardType: TextInputType.emailAddress,
           onChanged: onTap,
           style: appTextStyleWidget(

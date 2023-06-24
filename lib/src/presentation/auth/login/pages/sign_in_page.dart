@@ -148,6 +148,7 @@ class _SignInPageState extends State<SignInPage> {
         height: SizeManager.s50.h,
         width: SizeManager.s345.w,
         child: TextField(
+          autocorrect: false,
           obscureText: isNotPassword ? false : _obscureText,
           onChanged: onTap,
           style: appTextStyleWidget(
