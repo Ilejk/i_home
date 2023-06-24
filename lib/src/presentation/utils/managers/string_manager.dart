@@ -96,6 +96,26 @@ class StringManager {
   static const String takePhoto = 'Take Photo';
   static const String choosePhoto = 'Choose Photo';
   static const String updateAccInfo = 'Update your\naccount information';
+  //DEVICE
+  static const String lowPowerMode = 'Low power mode';
+  static const String percentage100 = '100 %';
+  static const String percentage50 = '50 %';
+  static const String percentage25 = '25 %';
+  static const String brightMode = 'Bright\nlighting';
+  static const String mediumMode = 'Medium\nlighting';
+  static const String dimMode = 'Dim\nlighting';
+  static const String powerPercentage = 'Power\npercentage';
+  static const String autoAcMode = 'Auto AC Mode';
+  static const String airFlowRate = 'Air flow rate';
+  static const String airFlowDirection = 'Air flow direction';
+  static const String airwave = 'Airwave';
+  static const String heating = 'Heating';
+  static const String cooling = 'Cooling';
+  static const String airFlowUp = 'Up';
+  static const String airFlowDown = 'Down';
+  static const String airFlowLow = 'Low';
+  static const String airFlowMedium = 'Medium';
+  static const String airFlowHigh = 'High';
 }
 
 class ErrorCodeString {
