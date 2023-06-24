@@ -116,6 +116,9 @@ class StringManager {
   static const String airFlowLow = 'Low';
   static const String airFlowMedium = 'Medium';
   static const String airFlowHigh = 'High';
+  static const String freezerMode = 'Freezer mode';
+  static const String freezerModeFreezing = 'Freezing';
+  static const String freezerModeCooling = 'Cooling';
 }
 
 class ErrorCodeString {

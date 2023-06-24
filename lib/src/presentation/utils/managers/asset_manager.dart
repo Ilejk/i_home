@@ -31,4 +31,6 @@ class ImageManager {
   static const wSunny = '$imagePath/sunny.png';
   static const wWindy = '$imagePath/wind.png';
   static const wStormy = '$imagePath/storm.png';
+  //DEVICE
+  static const congo = '$imagePath/congo.png';
 }

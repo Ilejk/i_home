@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_home/src/domain/core/bottom_bar_bloc/bottom_bar_bloc_bloc.dart';
-import 'package:i_home/src/presentation/app/devices/pages/devices_page.dart';
 import 'package:i_home/src/presentation/app/home/pages/home_page.dart';
 import 'package:i_home/src/presentation/app/profile/pages/profile_page.dart';
 import 'package:i_home/src/presentation/app/main/widgets/custom_painter.dart';
-import 'package:i_home/src/presentation/app/modes/pages/modes_page.dart';
 import 'package:i_home/src/presentation/router/router.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
@@ -45,10 +43,6 @@ class _MainPageState extends State<MainPage> {
       case 0:
         return const HomePage();
       case 1:
-        return const DevicesPage();
-      case 2:
-        return const ModesPage();
-      case 3:
         return const ProfilePage();
       default:
         return Container();
@@ -89,9 +83,7 @@ class _MainPageState extends State<MainPage> {
 
   SizedBox bottonNavigationBar(Size size) {
     int isHome = 0;
-    int isDevices = 1;
-    int isModes = 2;
-    int isProfile = 3;
+    int isProfile = 1;
     return SizedBox(
       width: size.width,
       height: SizeManager.s70.h,
@@ -106,24 +98,8 @@ class _MainPageState extends State<MainPage> {
               size: SizeManager.s30,
             ),
           ),
-          IconButton(
-            onPressed: () => changeNavBarPage(isDevices),
-            icon: Icon(
-              Icons.phonelink_ring_rounded,
-              color: _getIconColor(isDevices),
-              size: SizeManager.s30,
-            ),
-          ),
           Container(
             width: size.width * 0.2,
-          ),
-          IconButton(
-            onPressed: () => changeNavBarPage(isModes),
-            icon: Icon(
-              Icons.settings_backup_restore_rounded,
-              color: _getIconColor(isModes),
-              size: SizeManager.s30,
-            ),
           ),
           IconButton(
             onPressed: () => changeNavBarPage(isProfile),

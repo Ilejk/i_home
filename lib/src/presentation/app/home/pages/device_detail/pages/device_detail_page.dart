@@ -27,8 +27,13 @@ class DeviceDetailPage extends StatefulWidget {
 class _DeviceDetailPageState extends State<DeviceDetailPage> {
   double _currentLightSliderValue = 0;
   double _currentACSliderValue = 0;
+  double _currentFridgeSliderValue = 75;
+  double _currentTVSliderValue = 0;
+  double _currentTVVolumeSliderValue = 0;
   String flowDirection = StringManager.airFlowDown;
   String airFlowRate = StringManager.airFlowLow;
+  String freezerMode = StringManager.freezerModeFreezing;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,11 +92,539 @@ class _DeviceDetailPageState extends State<DeviceDetailPage> {
   }
 
   Widget getSmartTvBody() {
-    return Column();
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: PaddingManager.p12.w,
+        vertical: PaddingManager.p12.h,
+      ),
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextWidget(
+              text: 'Now playing...',
+              align: TextAlign.left,
+              style: appTextStyleWidget(
+                size: FontSize.s20,
+                color: ColorManager.white,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+          ),
+          const HeightSpacer(iH: SizeManager.s10),
+          Container(
+            height: SizeManager.s200.h,
+            width: SizeManager.deviceWidth,
+            decoration: BoxDecoration(
+              color: ColorManager.secondaryDarkGrey,
+              border: Border.all(
+                  color: ColorManager.accentDarkYellow, width: SizeManager.s3),
+              borderRadius: BorderRadius.circular(SizeManager.s20),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(PaddingManager.p3),
+              child: Container(
+                height: SizeManager.s200.h,
+                width: SizeManager.deviceWidth,
+                decoration: BoxDecoration(
+                  color: _currentTVSliderValue > 0
+                      ? ColorManager.accentDarkGrey
+                      : ColorManager.black,
+                  border: Border.all(
+                      color: ColorManager.accentDarkYellow,
+                      width: SizeManager.s3),
+                  borderRadius: BorderRadius.circular(SizeManager.s20),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(SizeManager.s20),
+                  child: _currentTVSliderValue > 0
+                      ? Image.asset(
+                          ImageManager.congo,
+                          fit: BoxFit.cover,
+                        )
+                      : Container(),
+                ),
+              ),
+            ),
+          ),
+          const HeightSpacer(iH: SizeManager.s10),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextWidget(
+              text: 'Adjust the volume',
+              align: TextAlign.left,
+              style: appTextStyleWidget(
+                size: FontSize.s20,
+                color: ColorManager.white,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+          ),
+          const HeightSpacer(iH: SizeManager.s10),
+          Container(
+            decoration: BoxDecoration(
+                color: ColorManager.secondaryDarkGrey,
+                borderRadius: BorderRadius.circular(SizeManager.s20),
+                border: Border.all(
+                  color: ColorManager.accentDarkYellow,
+                  width: SizeManager.s3,
+                )),
+            child: Slider(
+              thumbColor: ColorManager.accentDarkYellow,
+              secondaryActiveColor: ColorManager.accentLightYellow,
+              inactiveColor: ColorManager.secondaryDarkGrey,
+              activeColor: ColorManager.accentDarkYellow,
+              value: _currentTVVolumeSliderValue,
+              max: 100,
+              divisions: 20,
+              label: _currentTVVolumeSliderValue.round().toString(),
+              onChanged: (double value) {
+                setState(() {
+                  _currentTVVolumeSliderValue = value;
+                });
+              },
+            ),
+          ),
+          const HeightSpacer(iH: SizeManager.s10),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextWidget(
+              text: 'Adjust the brightness',
+              align: TextAlign.left,
+              style: appTextStyleWidget(
+                size: FontSize.s20,
+                color: ColorManager.white,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+          ),
+          const HeightSpacer(iH: SizeManager.s10),
+          Container(
+            decoration: BoxDecoration(
+                color: ColorManager.secondaryDarkGrey,
+                borderRadius: BorderRadius.circular(SizeManager.s20),
+                border: Border.all(
+                  color: ColorManager.accentDarkYellow,
+                  width: SizeManager.s3,
+                )),
+            child: Slider(
+              thumbColor: ColorManager.accentDarkYellow,
+              secondaryActiveColor: ColorManager.accentLightYellow,
+              inactiveColor: ColorManager.secondaryDarkGrey,
+              activeColor: ColorManager.accentDarkYellow,
+              value: _currentTVSliderValue,
+              max: 100,
+              divisions: 20,
+              label: _currentTVSliderValue.round().toString(),
+              onChanged: (double value) {
+                setState(() {
+                  _currentTVSliderValue = value;
+                });
+              },
+            ),
+          ),
+          const HeightSpacer(iH: SizeManager.s10),
+          Container(
+            height: SizeManager.s135.h,
+            width: SizeManager.deviceWidth,
+            decoration: BoxDecoration(
+              color: ColorManager.secondaryDarkGrey,
+              borderRadius: BorderRadius.circular(SizeManager.s20),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(PaddingManager.p12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      _currentTVSliderValue = 41;
+                      setState(() {});
+                    },
+                    child: Container(
+                      height: SizeManager.s100.h,
+                      width: SizeManager.s150.w,
+                      decoration: BoxDecoration(
+                        color: ColorManager.accentDarkGrey,
+                        borderRadius: BorderRadius.circular(SizeManager.s20),
+                        border: Border.all(
+                          color: _currentTVSliderValue > 40
+                              ? ColorManager.accentDarkYellow
+                              : ColorManager.accentDarkGrey,
+                          width: SizeManager.s3,
+                        ),
+                      ),
+                      child: Center(
+                        child: TextWidget(
+                          text: 'Day Mode',
+                          align: TextAlign.center,
+                          style: appTextStyleWidget(
+                            size: FontSize.s20,
+                            color: _currentTVSliderValue > 40
+                                ? ColorManager.accentDarkYellow
+                                : ColorManager.white,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      _currentTVSliderValue = 39;
+                      setState(() {});
+                    },
+                    child: Container(
+                      height: SizeManager.s100.h,
+                      width: SizeManager.s150.w,
+                      decoration: BoxDecoration(
+                        color: ColorManager.accentDarkGrey,
+                        border: Border.all(
+                          color: _currentTVSliderValue <= 40
+                              ? ColorManager.accentDarkYellow
+                              : ColorManager.accentDarkGrey,
+                          width: SizeManager.s3,
+                        ),
+                        borderRadius: BorderRadius.circular(SizeManager.s20),
+                      ),
+                      child: Center(
+                        child: TextWidget(
+                          text: 'Night Mode',
+                          align: TextAlign.center,
+                          style: appTextStyleWidget(
+                            size: FontSize.s20,
+                            color: _currentTVSliderValue <= 40
+                                ? ColorManager.accentDarkYellow
+                                : ColorManager.white,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          const HeightSpacer(iH: SizeManager.s10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              GestureDetector(
+                onTap: turnOnTvFunction,
+                child: Container(
+                  height: SizeManager.s80.h,
+                  width: SizeManager.s80.h,
+                  decoration: BoxDecoration(
+                    color: ColorManager.secondaryDarkGrey,
+                    border: Border.all(
+                      color: ColorManager.accentDarkYellow,
+                      width: SizeManager.s3,
+                    ),
+                    borderRadius: BorderRadius.circular(SizeManager.s50),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(PaddingManager.p15),
+                    child: Image.asset(
+                      ImageManager.homeTurnOn,
+                      color: ColorManager.accentDarkYellow,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  void turnOnTvFunction() {
+    if (_currentTVSliderValue > 0 || _currentTVVolumeSliderValue > 0) {
+      _currentTVSliderValue = 0;
+      _currentTVVolumeSliderValue = 0;
+    } else if (_currentTVSliderValue == 0) {
+      _currentTVSliderValue = 50;
+      _currentTVVolumeSliderValue = 30;
+    }
+    setState(() {});
   }
 
   Widget getSmartFridgeBody() {
-    return Column();
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: PaddingManager.p12.w,
+        vertical: PaddingManager.p12.h,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: SizeManager.deviceHeight / 3.5,
+            width: SizeManager.deviceWidth,
+            child: Stack(
+              children: [
+                Positioned(
+                  top: 5,
+                  left: (SizeManager.deviceWidth - 294) / 2,
+                  child: CircularPercentIndicator(
+                    startAngle: 270,
+                    circularStrokeCap: CircularStrokeCap.round,
+                    radius: SizeManager.s135,
+                    backgroundColor: ColorManager.primaryDarkGrey,
+                    lineWidth: SizeManager.s15,
+                    percent: (_currentFridgeSliderValue / 100) / 2,
+                    center: TextWidget(
+                      text:
+                          '${(_currentFridgeSliderValue / -2).toStringAsFixed(0)} C',
+                      maxLines: 2,
+                      align: TextAlign.center,
+                      style: appTextStyleWidget(
+                        size: FontSize.s30,
+                        color: ColorManager.white,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    progressColor: ColorManager.accentDarkYellow,
+                  ),
+                ),
+                Positioned(
+                  top: 180,
+                  left: 12,
+                  child: Container(
+                    width: SizeManager.deviceWidth - 48,
+                    decoration: BoxDecoration(
+                        color: ColorManager.secondaryDarkGrey,
+                        borderRadius: BorderRadius.circular(SizeManager.s20),
+                        border: Border.all(
+                          color: ColorManager.accentDarkYellow,
+                          width: SizeManager.s3,
+                        )),
+                    child: Slider(
+                      thumbColor: ColorManager.accentDarkYellow,
+                      secondaryActiveColor: ColorManager.accentLightYellow,
+                      inactiveColor: ColorManager.secondaryDarkGrey,
+                      activeColor: ColorManager.accentDarkYellow,
+                      value: _currentFridgeSliderValue,
+                      max: 100,
+                      divisions: 20,
+                      label: _currentFridgeSliderValue.round().toString(),
+                      onChanged: (double value) {
+                        setState(() {
+                          _currentFridgeSliderValue = value;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const HeightSpacer(iH: SizeManager.s20),
+          Container(
+            width: SizeManager.deviceWidth,
+            height: SizeManager.s300.h,
+            decoration: BoxDecoration(
+              color: ColorManager.secondaryDarkGrey,
+              borderRadius: BorderRadius.circular(SizeManager.s20),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(PaddingManager.p12),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: SizeManager.deviceWidth,
+                    height: SizeManager.s80.h,
+                    decoration: BoxDecoration(
+                      color: ColorManager.accentDarkGrey,
+                      borderRadius: BorderRadius.circular(SizeManager.s20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(PaddingManager.p12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextWidget(
+                            text: StringManager.freezerMode,
+                            maxLines: 1,
+                            align: TextAlign.center,
+                            style: appTextStyleWidget(
+                              size: FontSize.s15,
+                              color: ColorManager.white,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                onPressed: changeFreezingMode,
+                                icon: const Icon(
+                                  IconlyLight.arrow_left_2,
+                                  size: SizeManager.s30,
+                                  color: ColorManager.white,
+                                ),
+                              ),
+                              TextWidget(
+                                text: freezerMode,
+                                maxLines: 1,
+                                align: TextAlign.center,
+                                style: appTextStyleWidget(
+                                  size: FontSize.s20,
+                                  color: ColorManager.accentDarkYellow,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: changeFreezingMode,
+                                icon: const Icon(
+                                  IconlyLight.arrow_right_2,
+                                  size: SizeManager.s30,
+                                  color: ColorManager.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const HeightSpacer(iH: SizeManager.s10),
+                  Container(
+                    width: SizeManager.deviceWidth,
+                    height: SizeManager.s80.h,
+                    decoration: BoxDecoration(
+                      color: ColorManager.accentDarkGrey,
+                      borderRadius: BorderRadius.circular(SizeManager.s20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(PaddingManager.p12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextWidget(
+                            text: StringManager.airFlowDirection,
+                            maxLines: 1,
+                            align: TextAlign.center,
+                            style: appTextStyleWidget(
+                              size: FontSize.s15,
+                              color: ColorManager.white,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                onPressed: changeFlowDirection,
+                                icon: const Icon(
+                                  IconlyLight.arrow_left_2,
+                                  size: SizeManager.s30,
+                                  color: ColorManager.white,
+                                ),
+                              ),
+                              TextWidget(
+                                text: flowDirection,
+                                maxLines: 1,
+                                align: TextAlign.center,
+                                style: appTextStyleWidget(
+                                  size: FontSize.s20,
+                                  color: ColorManager.accentDarkYellow,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: changeFlowDirection,
+                                icon: const Icon(
+                                  IconlyLight.arrow_right_2,
+                                  size: SizeManager.s30,
+                                  color: ColorManager.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const HeightSpacer(iH: SizeManager.s10),
+                  Container(
+                    width: SizeManager.deviceWidth,
+                    height: SizeManager.s80.h,
+                    decoration: BoxDecoration(
+                      color: ColorManager.accentDarkGrey,
+                      borderRadius: BorderRadius.circular(SizeManager.s20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(PaddingManager.p12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextWidget(
+                            text: StringManager.airFlowRate,
+                            maxLines: 1,
+                            align: TextAlign.center,
+                            style: appTextStyleWidget(
+                              size: FontSize.s15,
+                              color: ColorManager.white,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                onPressed: changeAirFlowDown,
+                                icon: const Icon(
+                                  IconlyLight.arrow_left_2,
+                                  size: SizeManager.s30,
+                                  color: ColorManager.white,
+                                ),
+                              ),
+                              TextWidget(
+                                text: airFlowRate,
+                                maxLines: 1,
+                                align: TextAlign.center,
+                                style: appTextStyleWidget(
+                                  size: FontSize.s20,
+                                  color: ColorManager.accentDarkYellow,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: changeAirFlowUp,
+                                icon: const Icon(
+                                  IconlyLight.arrow_right_2,
+                                  size: SizeManager.s30,
+                                  color: ColorManager.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void changeFreezingMode() {
+    if (freezerMode == StringManager.freezerModeFreezing) {
+      freezerMode = StringManager.freezerModeCooling;
+      _currentFridgeSliderValue = 15;
+    } else if (freezerMode == StringManager.freezerModeCooling) {
+      freezerMode = StringManager.freezerModeFreezing;
+      _currentFridgeSliderValue = 75;
+    }
+    setState(() {});
   }
 
   Widget getSmartAcBody() {

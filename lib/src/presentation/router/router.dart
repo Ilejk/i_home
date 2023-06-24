@@ -3,11 +3,9 @@ import 'package:i_home/src/presentation/app/home/pages/device_detail/pages/devic
 import 'package:i_home/src/presentation/app/profile/pages/settings/pages/change_password/pages/change_password_page.dart';
 import 'package:i_home/src/presentation/app/profile/pages/settings/pages/edit_account/pages/edit_account_page.dart';
 import 'package:i_home/src/presentation/auth/auth/pages/auth_page.dart';
-import 'package:i_home/src/presentation/app/devices/pages/devices_page.dart';
 import 'package:i_home/src/presentation/auth/forgot_password/pages/forgot_password_page.dart';
 import 'package:i_home/src/presentation/app/home/pages/home_page.dart';
 import 'package:i_home/src/presentation/app/main/pages/main_page.dart';
-import 'package:i_home/src/presentation/app/modes/pages/modes_page.dart';
 import 'package:i_home/src/presentation/app/home/pages/music/pages/music_page.dart';
 import 'package:i_home/src/presentation/app/on_boarding/pages/on_boarding_page.dart';
 import 'package:i_home/src/presentation/app/profile/pages/achievements/pages/achievements_page.dart';
@@ -27,9 +25,7 @@ class Routes {
   static const String authRoute = '/authRoute';
   static const String signInRoute = '/signInRoute';
   static const String homeRoute = '/homeRoute';
-  static const String devicesRoute = '/devicesRoute';
   static const String speakRoute = '/speakRoute';
-  static const String modesRoute = '/modesRoute';
   static const String registerRoute = '/registerRoute';
   static const String forgotPasswordRoute = '/forgotPasswordRoute';
   static const String profileRoute = '/profileRoute';
@@ -57,12 +53,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const AuthPage());
       case Routes.mainRoute:
         return MaterialPageRoute(builder: (_) => const MainPage());
-      case Routes.devicesRoute:
-        return MaterialPageRoute(builder: (_) => const DevicesPage());
       case Routes.speakRoute:
         return MaterialPageRoute(builder: (_) => const SpeakPage());
-      case Routes.modesRoute:
-        return MaterialPageRoute(builder: (_) => const ModesPage());
       case Routes.deviceDetailRoute:
         final index = routeSettings.arguments as Map<String, dynamic>? ?? {};
         return MaterialPageRoute(
