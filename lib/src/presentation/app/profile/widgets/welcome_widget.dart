@@ -5,7 +5,6 @@ import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/string_manager.dart';
 import 'package:i_home/src/presentation/widgets/app_textstyle_widget.dart';
-import 'package:i_home/src/presentation/widgets/spacers.dart';
 import 'package:i_home/src/presentation/widgets/text_widget.dart';
 
 class WelcomeWidget extends StatelessWidget {
@@ -49,28 +48,29 @@ class WelcomeWidget extends StatelessWidget {
               ),
             ),
           ),
-          const WidthSpacer(iW: SizeManager.s65),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextWidget(
-                text: StringManager.welcome,
-                style: appTextStyleWidget(
-                  size: FontSize.s20,
-                  color: ColorManager.white,
-                  fontWeight: FontWeight.w600,
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextWidget(
+                  text: StringManager.welcome,
+                  style: appTextStyleWidget(
+                    size: FontSize.s20,
+                    color: ColorManager.white,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
-              TextWidget(
-                text: userName,
-                style: appTextStyleWidget(
-                  size: FontSize.s17,
-                  color: ColorManager.white,
-                  fontWeight: FontWeight.normal,
+                TextWidget(
+                  text: userName,
+                  style: appTextStyleWidget(
+                    size: FontSize.s17,
+                    color: ColorManager.white,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           )
         ],
       ),

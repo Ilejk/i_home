@@ -63,6 +63,7 @@ class HomePage extends StatelessWidget {
                               onTap: () => GBM.pushNamed(
                                 context: context,
                                 routeName: Routes.deviceDetailRoute,
+                                arguments: {'index': index},
                               ),
                             );
                           },

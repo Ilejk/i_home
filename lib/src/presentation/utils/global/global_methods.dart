@@ -6,8 +6,12 @@ import 'package:i_home/src/domain/service/storage_service.dart';
 import 'package:i_home/src/presentation/utils/managers/color_manager.dart';
 
 class GBM {
-  static pushNamed({required BuildContext context, required String routeName}) {
-    Navigator.of(context).pushNamed(routeName);
+  static pushNamed({
+    required BuildContext context,
+    required String routeName,
+    Object? arguments,
+  }) {
+    Navigator.of(context).pushNamed(routeName, arguments: arguments);
   }
 
   static pushAndReplaceNamed(

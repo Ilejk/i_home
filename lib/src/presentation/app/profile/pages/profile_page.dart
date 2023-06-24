@@ -50,29 +50,6 @@ class _ProfilePageState extends State<ProfilePage> {
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            elevation: 0.0,
-            backgroundColor: ColorManager.primaryDarkGrey,
-            title: TextWidget(
-              text: StringManager.profile,
-              style: appTextStyleWidget(
-                size: FontSize.s20,
-                color: ColorManager.white,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  //TODO
-                },
-                icon: const Icon(
-                  Icons.more_vert_rounded,
-                  size: SizeManager.s25,
-                ),
-              )
-            ],
-          ),
           backgroundColor: ColorManager.primaryDarkGrey,
           body: SafeArea(
             child: Padding(
