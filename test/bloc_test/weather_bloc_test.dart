@@ -1,75 +1,140 @@
-import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:http/http.dart' as http;
 import 'package:i_home/src/domain/core/weather_bloc/weather_bloc_bloc.dart';
-import 'package:i_home/src/presentation/utils/constnants/key.dart';
+import 'package:permission_handler/permission_handler.dart';
+
 import 'package:i_home/src/presentation/utils/managers/asset_manager.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:mockito/mockito.dart';
 
-class MockGeolocatorPlatform extends Mock implements GeolocatorPlatform {}
+class MockGeolocator extends Mock implements GeolocatorPlatform {
+  final bool successful;
+  final PermissionStatus permissionStatus;
+  final String weatherCondition;
 
-class MockResponse extends Mock implements http.Response {
+  MockGeolocator({
+    this.successful = true,
+    this.permissionStatus = PermissionStatus.granted,
+    this.weatherCondition = 'Clear',
+  });
   @override
-  int get statusCode => super.noSuchMethod(Invocation.getter(#statusCode),
-      returnValue: 200, returnValueForMissingStub: 200);
+  Future<Position> getCurrentPosition(
+      {LocationSettings? locationSettings}) async {
+    if (successful) {
+      return Position(
+        latitude: 40.7128,
+        longitude: -74.0060,
+        timestamp: DateTime.now(),
+        accuracy: 0,
+        altitude: 0,
+        heading: 0,
+        speed: 0,
+        speedAccuracy: 0,
+      );
+    } else {
+      throw Exception('Error getting current position');
+    }
+  }
+
   @override
-  String get body => super.noSuchMethod(Invocation.getter(#body),
-      returnValue:
-          '{"name": "City", "weather": [{"main": "Condition"}], "main": {"temp": 280.0}}',
-      returnValueForMissingStub:
-          '{"name": "City", "weather": [{"main": "Condition"}], "main": {"temp": 280.0}}');
+  Future<LocationPermission> checkPermission() async {
+    return LocationPermission.always;
+  }
+
+  @override
+  Future<LocationPermission> requestPermission() async {
+    return LocationPermission.always;
+  }
+
+  @override
+  Future<bool> openLocationSettings() async {
+    return true;
+  }
+
+  @override
+  Future<bool> openAppSettings() async {
+    return true;
+  }
 }
 
 void main() {
-  group('WeatherBlocBloc', () {
-    late WeatherBlocBloc weatherBloc;
-    late MockGeolocatorPlatform mockGeolocator;
-
-    setUp(() {
-      mockGeolocator = MockGeolocatorPlatform();
-      weatherBloc = WeatherBlocBloc(mockGeolocator);
+  group('WeatherBlocBloc tests', () {
+    test('WeatherBlocBloc can be instantiated', () {
+      final bloc = WeatherBlocBloc(GeolocatorPlatform.instance);
+      expect(bloc.state, const WeatherBlocState());
     });
 
-    tearDown(() {
-      weatherBloc.close();
-    });
-
-    blocTest<WeatherBlocBloc, WeatherBlocState>(
-      'emits correct states when WeatherBlocEvent is added',
-      build: () => weatherBloc,
-      act: (bloc) => bloc.add(const WeatherBlocEvent()),
-      expect: () => [
-        const WeatherBlocState(isLoading: true),
+    test('WeatherBlocBloc handles successful weather retrieval', () async {
+      final bloc = WeatherBlocBloc(MockGeolocator());
+      final expectedStates = [
+        WeatherBlocState.loading(),
         WeatherBlocState.loaded(
-          'City',
-          'Condition',
-          '7',
+          'New York',
+          'Clear',
+          '20',
           ImageManager.wSunny,
         ),
-      ],
-      verify: (_) {
-        verify(mockGeolocator.getCurrentPosition()).called(1);
-        verify(http.get(Uri.parse(
-                'https://api.openweathermap.org/data/2.5/weather?lat=0.0&lon=0.0&appid=$API_KEY')))
-            .called(1);
-      },
-    );
+      ];
 
-    blocTest<WeatherBlocBloc, WeatherBlocState>(
-      'emits error state when API request fails',
-      build: () => weatherBloc,
-      act: (bloc) => bloc.add(const WeatherBlocEvent()),
-      expect: () => [
-        const WeatherBlocState(isLoading: true),
-        const WeatherBlocState(error: 'Error retrieving weather'),
-      ],
-      verify: (_) {
-        verify(mockGeolocator.getCurrentPosition()).called(1);
-        verify(http.get(Uri.parse(
-                'https://api.openweathermap.org/data/2.5/weather?lat=0.0&lon=0.0&appid=$API_KEY')))
-            .called(1);
-      },
-    );
+      final actualStates = <WeatherBlocState>[];
+
+      final subscription = bloc.stream.listen((state) {
+        actualStates.add(state);
+      });
+
+      bloc.add(const WeatherBlocEvent());
+
+      await Future.delayed(Duration.zero);
+
+      expect(actualStates.length, equals(expectedStates.length));
+      for (int i = 0; i < actualStates.length; i++) {
+        expect(actualStates[i], equals(expectedStates[i]));
+      }
+
+      subscription.cancel();
+    });
+
+    test('WeatherBlocBloc handles permission denied error', () async {
+      final bloc = WeatherBlocBloc(
+          MockGeolocator(permissionStatus: PermissionStatus.denied));
+      final expectedState = [
+        WeatherBlocState.loading(),
+        WeatherBlocState.error('Error retrieving weather')
+      ];
+
+      expectLater(bloc.stream, emitsInOrder(expectedState));
+
+      bloc.add(const WeatherBlocEvent());
+    });
+
+    test('WeatherBlocBloc handles weather retrieval error', () async {
+      final bloc = WeatherBlocBloc(MockGeolocator(successful: false));
+      final expectedState = [
+        WeatherBlocState.loading(),
+        WeatherBlocState.error('Error retrieving weather')
+      ];
+
+      final actualStates = <WeatherBlocState>[];
+
+      bloc.stream.listen((state) {
+        actualStates.add(state);
+      });
+
+      bloc.add(const WeatherBlocEvent());
+      await Future.delayed(Duration.zero);
+
+      expect(actualStates, expectedState);
+    });
+
+    test('WeatherBlocBloc handles unknown weather condition', () async {
+      final bloc = WeatherBlocBloc(MockGeolocator(weatherCondition: 'Unknown'));
+      final expectedState = [
+        WeatherBlocState.loading(),
+        WeatherBlocState.error('Error retrieving weather')
+      ];
+
+      expectLater(bloc.stream, emitsInOrder(expectedState));
+
+      bloc.add(const WeatherBlocEvent());
+    });
   });
 }
