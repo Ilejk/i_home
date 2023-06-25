@@ -1,6 +1,6 @@
 part of 'register_bloc.dart';
 
-class RegisterState {
+class RegisterState extends Equatable {
   final String email;
   final String password;
   final String name;
@@ -25,4 +25,7 @@ class RegisterState {
       confirmPassword: confirmPassword ?? this.confirmPassword,
     );
   }
+
+  @override
+  List<String?> get props => [email, password, name, confirmPassword];
 }

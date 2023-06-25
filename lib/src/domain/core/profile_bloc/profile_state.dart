@@ -1,6 +1,6 @@
 part of 'profile_bloc.dart';
 
-class ProfileState {
+class ProfileState extends Equatable {
   final String imagePickerURL;
   final String userName;
   const ProfileState({
@@ -14,4 +14,7 @@ class ProfileState {
       userName: userName ?? this.userName,
     );
   }
+
+  @override
+  List<String?> get props => [imagePickerURL, userName];
 }

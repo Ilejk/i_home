@@ -1,6 +1,6 @@
 part of 'change_password_bloc.dart';
 
-class ChangePasswordState {
+class ChangePasswordState extends Equatable {
   final String oldPassword;
   final String newPassword;
 
@@ -18,4 +18,7 @@ class ChangePasswordState {
       newPassword: newPassword ?? this.newPassword,
     );
   }
+
+  @override
+  List<String?> get props => [oldPassword, newPassword];
 }

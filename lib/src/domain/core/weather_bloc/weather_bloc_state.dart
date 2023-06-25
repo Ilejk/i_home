@@ -1,6 +1,6 @@
 part of 'weather_bloc_bloc.dart';
 
-class WeatherBlocState {
+class WeatherBlocState extends Equatable {
   final bool isLoading;
   final String cityName;
   final String weatherCondition;
@@ -32,4 +32,8 @@ class WeatherBlocState {
   factory WeatherBlocState.error(String error) {
     return WeatherBlocState(error: error);
   }
+
+  @override
+  List<Object?> get props =>
+      [isLoading, cityName, weatherCondition, temperature, error, photo];
 }

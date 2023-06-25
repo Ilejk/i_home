@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:i_home/src/presentation/utils/constnants/key.dart';
@@ -67,11 +68,9 @@ class WeatherBlocBloc extends Bloc<WeatherBlocEvent, WeatherBlocState> {
         ));
       } else {
         emit(WeatherBlocState.error('Error retrieving weather'));
-        print('error');
       }
     } catch (e) {
       emit(WeatherBlocState.error('Error retrieving weather'));
-      print('chuj');
     }
   }
 }

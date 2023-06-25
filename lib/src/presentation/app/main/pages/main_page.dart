@@ -115,8 +115,7 @@ class _MainPageState extends State<MainPage> {
   }
 
   void changeNavBarPage(int index) {
-    context.read<BottomBarBlocBloc>().state.selectedIndex = index;
-    context.read<BottomBarBlocBloc>().add(BottomBarBlocEvent());
+    context.read<BottomBarBlocBloc>().add(BottomBarBlocEvent(index));
   }
 
   Center bottomNavSpeakButton() {

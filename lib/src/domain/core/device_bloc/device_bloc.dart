@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:i_home/src/domain/repo/device_repository.dart';
 
 part 'device_event.dart';

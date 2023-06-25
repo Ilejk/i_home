@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 
 part 'edit_account_event.dart';
 part 'edit_account_state.dart';

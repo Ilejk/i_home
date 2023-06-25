@@ -1,6 +1,6 @@
 part of 'device_bloc.dart';
 
-class DeviceState {
+class DeviceState extends Equatable {
   final bool isOnValue;
 
   const DeviceState({
@@ -14,4 +14,7 @@ class DeviceState {
       isOnValue: isOnValue ?? this.isOnValue,
     );
   }
+
+  @override
+  List<bool?> get props => [isOnValue];
 }

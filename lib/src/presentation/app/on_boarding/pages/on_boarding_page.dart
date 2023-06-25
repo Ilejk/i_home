@@ -35,9 +35,8 @@ class _BoardingPageState extends State<BoardingPage> {
                 PageView(
                   controller: pageController,
                   onPageChanged: (index) {
-                    state.page = index;
                     BlocProvider.of<OnBoardingBlocBloc>(context).add(
-                      OnBoardingBlocEvent(),
+                      OnBoardingBlocEvent(index),
                     );
                   },
                   children: [

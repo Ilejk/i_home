@@ -1,6 +1,6 @@
 part of 'sign_in_bloc.dart';
 
-class SignInState {
+class SignInState extends Equatable {
   final String email;
   final String password;
 
@@ -17,4 +17,7 @@ class SignInState {
       password: password ?? this.password,
     );
   }
+
+  @override
+  List<String?> get props => [email, password];
 }

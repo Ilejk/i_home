@@ -1,6 +1,6 @@
 part of 'edit_account_bloc.dart';
 
-class EditAccountState {
+class EditAccountState extends Equatable {
   final String newEmail;
   final String newName;
   final String password;
@@ -20,4 +20,7 @@ class EditAccountState {
       password: password ?? this.password,
     );
   }
+
+  @override
+  List<dynamic> get props => [newEmail, newName, password];
 }
