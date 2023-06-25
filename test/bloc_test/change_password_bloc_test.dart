@@ -1,6 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:i_home/src/domain/auth/change_password/change_password_bloc.dart';
+import 'package:i_home/src/presentation/utils/constnants/constants.dart';
 
 void main() {
   group('ChangePasswordBloc', () {
@@ -14,32 +15,25 @@ void main() {
       changePasswordBloc.close();
     });
 
-    test('emits correct state when ChangePasswordOldPasswordEvent is added',
-        () {
-      const String oldPassword = 'oldPassword123';
-      const expectedState = ChangePasswordState(oldPassword: oldPassword);
+    test('initial old password state',
+        () => expect(changePasswordBloc.state.oldPassword, emptyString));
+    blocTest<ChangePasswordBloc, ChangePasswordState>(
+      'emits correct state when ChangePasswordOldPasswordEvent is added',
+      build: () => changePasswordBloc,
+      act: (bloc) =>
+          bloc.add(const ChangePasswordOldPasswordEvent('oldPassword12345')),
+      expect: () =>
+          [const ChangePasswordState(oldPassword: 'oldPassword12345')],
+    );
 
-      blocTest<ChangePasswordBloc, ChangePasswordState>(
-        'emits correct state when ChangePasswordOldPasswordEvent is added',
-        build: () => changePasswordBloc,
-        act: (bloc) =>
-            bloc.add(const ChangePasswordOldPasswordEvent(oldPassword)),
-        expect: () => [expectedState],
-      );
-    });
-
-    test('emits correct state when ChangePasswordNewPasswordEvent is added',
-        () {
-      const String newPassword = 'newPassword456';
-      const expectedState = ChangePasswordState(newPassword: newPassword);
-
-      blocTest<ChangePasswordBloc, ChangePasswordState>(
-        'emits correct state when ChangePasswordNewPasswordEvent is added',
-        build: () => changePasswordBloc,
-        act: (bloc) =>
-            bloc.add(const ChangePasswordNewPasswordEvent(newPassword)),
-        expect: () => [expectedState],
-      );
-    });
+    test('initial new password state',
+        () => expect(changePasswordBloc.state.newPassword, emptyString));
+    blocTest<ChangePasswordBloc, ChangePasswordState>(
+      'emits correct state when ChangePasswordNewPasswordEvent is added',
+      build: () => changePasswordBloc,
+      act: (bloc) =>
+          bloc.add(const ChangePasswordNewPasswordEvent('newPassword1234')),
+      expect: () => [const ChangePasswordState(newPassword: 'newPassword1234')],
+    );
   });
 }

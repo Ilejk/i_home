@@ -1,6 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:i_home/src/domain/auth/register_bloc/register_bloc.dart';
+import 'package:i_home/src/presentation/utils/constnants/constants.dart';
 
 void main() {
   group('RegisterBloc', () {
@@ -14,53 +15,44 @@ void main() {
       registerBloc.close();
     });
 
-    test('emits correct state when RegisterEmailEvent is added', () {
-      const String email = 'test@example.com';
-      const expectedState = RegisterState(email: email);
+    test('initial email state',
+        () => expect(registerBloc.state.email, emptyString));
 
-      blocTest<RegisterBloc, RegisterState>(
-        'emits correct state when RegisterEmailEvent is added',
-        build: () => registerBloc,
-        act: (bloc) => bloc.add(const RegisterEmailEvent(email)),
-        expect: () => [expectedState],
-      );
-    });
+    blocTest<RegisterBloc, RegisterState>(
+      'emits correct state when RegisterEmailEvent is added',
+      build: () => registerBloc,
+      act: (bloc) => bloc.add(const RegisterEmailEvent('exm@exmp.com')),
+      expect: () => [const RegisterState(email: 'exm@exmp.com')],
+    );
 
-    test('emits correct state when RegisterPasswordEvent is added', () {
-      const String password = 'password123';
-      const expectedState = RegisterState(password: password);
+    test('initial password state',
+        () => expect(registerBloc.state.password, emptyString));
+    blocTest<RegisterBloc, RegisterState>(
+      'emits correct state when RegisterPasswordEvent is added',
+      build: () => registerBloc,
+      act: (bloc) => bloc.add(const RegisterPasswordEvent('password12345')),
+      expect: () => [const RegisterState(password: 'password12345')],
+    );
 
-      blocTest<RegisterBloc, RegisterState>(
-        'emits correct state when RegisterPasswordEvent is added',
-        build: () => registerBloc,
-        act: (bloc) => bloc.add(const RegisterPasswordEvent(password)),
-        expect: () => [expectedState],
-      );
-    });
+    test('initial name state',
+        () => expect(registerBloc.state.name, emptyString));
 
-    test('emits correct state when RegisterNameEvent is added', () {
-      const String name = 'John Doe';
-      const expectedState = RegisterState(name: name);
+    blocTest<RegisterBloc, RegisterState>(
+      'emits correct state when RegisterNameEvent is added',
+      build: () => registerBloc,
+      act: (bloc) => bloc.add(const RegisterNameEvent('Jake Rake')),
+      expect: () => [const RegisterState(name: 'Jake Rake')],
+    );
 
-      blocTest<RegisterBloc, RegisterState>(
-        'emits correct state when RegisterNameEvent is added',
-        build: () => registerBloc,
-        act: (bloc) => bloc.add(const RegisterNameEvent(name)),
-        expect: () => [expectedState],
-      );
-    });
+    test('initial confrim password state',
+        () => expect(registerBloc.state.confirmPassword, emptyString));
 
-    test('emits correct state when RegisterConfirmPasswordEvent is added', () {
-      const String confirmPassword = 'password123';
-      const expectedState = RegisterState(confirmPassword: confirmPassword);
-
-      blocTest<RegisterBloc, RegisterState>(
-        'emits correct state when RegisterConfirmPasswordEvent is added',
-        build: () => registerBloc,
-        act: (bloc) =>
-            bloc.add(const RegisterConfirmPasswordEvent(confirmPassword)),
-        expect: () => [expectedState],
-      );
-    });
+    blocTest<RegisterBloc, RegisterState>(
+      'emits correct state when RegisterConfirmPasswordEvent is added',
+      build: () => registerBloc,
+      act: (bloc) =>
+          bloc.add(const RegisterConfirmPasswordEvent('password12345')),
+      expect: () => [const RegisterState(confirmPassword: 'password12345')],
+    );
   });
 }

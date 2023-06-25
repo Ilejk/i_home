@@ -18,7 +18,11 @@ class ProfileRepository {
 
   Future<void> handleImagePicking(ImageSource imageSource) async {
     try {
-      final currentUserUid = FirebaseAuth.instance.currentUser!.uid;
+      final currentUserUid = FirebaseAuth.instance.currentUser?.uid;
+      if (currentUserUid == null) {
+        toastInfo(msg: StringManager.netError);
+        return;
+      }
       final state = context.read<ProfileBloc>().state;
       String pickedImage = state.imagePickerURL;
 

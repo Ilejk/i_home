@@ -1,6 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:i_home/src/domain/auth/sign_in_bloc/sign_in_bloc.dart';
+import 'package:i_home/src/presentation/utils/constnants/constants.dart';
 
 void main() {
   group('SignInBloc', () {
@@ -14,28 +15,24 @@ void main() {
       signInBloc.close();
     });
 
-    test('emits correct state when SignInEmailEvent is added', () {
-      const String email = 'test@example.com';
-      const expectedState = SignInState(email: email);
+    test('initial email state',
+        () => expect(signInBloc.state.email, emptyString));
 
-      blocTest<SignInBloc, SignInState>(
-        'emits correct state when SignInEmailEvent is added',
-        build: () => signInBloc,
-        act: (bloc) => bloc.add(const SignInEmailEvent(email)),
-        expect: () => [expectedState],
-      );
-    });
+    blocTest<SignInBloc, SignInState>(
+      'emits correct state when SignInEmailEvent is added',
+      build: () => signInBloc,
+      act: (bloc) => bloc.add(const SignInEmailEvent('exm@exmp.com')),
+      expect: () => [const SignInState(email: 'exm@exmp.com')],
+    );
 
-    test('emits correct state when SignInPasswordEvent is added', () {
-      const String password = 'password123';
-      const expectedState = SignInState(password: password);
+    test('initial password state',
+        () => expect(signInBloc.state.password, emptyString));
 
-      blocTest<SignInBloc, SignInState>(
-        'emits correct state when SignInPasswordEvent is added',
-        build: () => signInBloc,
-        act: (bloc) => bloc.add(const SignInPasswordEvent(password)),
-        expect: () => [expectedState],
-      );
-    });
+    blocTest<SignInBloc, SignInState>(
+      'emits correct state when SignInPasswordEvent is added',
+      build: () => signInBloc,
+      act: (bloc) => bloc.add(const SignInPasswordEvent('password123')),
+      expect: () => [const SignInState(password: 'password123')],
+    );
   });
 }
