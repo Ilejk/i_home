@@ -4,6 +4,7 @@ it provides real-time weather updates, ensuring you stay informed about the curr
 
 #STILL IN PROGRESS
 
-https://github.com/Ilejk/i_home/assets/120920696/178e2da2-4a16-4b7a-9152-9567db8c0424
+https://github.com/Ilejk/i_home/assets/120920696/c1cae995-4ed8-447b-8363-e70c8b3b9a76
+
 
 
