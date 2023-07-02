@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'package:i_home/src/presentation/utils/managers/font_manager.dart';
 import 'package:i_home/src/presentation/utils/managers/size_manager.dart';
 import 'package:i_home/src/presentation/widgets/app_textstyle_widget.dart';
 import 'package:i_home/src/presentation/widgets/text_widget.dart';
+import 'package:lottie/lottie.dart';
 
 class HomePageSmartWeather extends StatefulWidget {
   const HomePageSmartWeather({
@@ -48,14 +50,18 @@ class _HomePageSmartWeatherState extends State<HomePageSmartWeather> {
             children: [
               Stack(
                 children: [
-                  SizedBox(
+                  Container(
                     height: SizeManager.s60.h,
                     width: SizeManager.s150.w,
-                    child: ClipRRect(
+                    decoration: BoxDecoration(
+                      color: ColorManager.accentDarkGrey,
                       borderRadius: BorderRadius.circular(SizeManager.s40),
-                      child: Image.asset(
-                        state.photo,
-                        fit: BoxFit.fill,
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(SizeManager.s40),
+                        child: LottieBuilder.asset(state.animation),
                       ),
                     ),
                   ),

@@ -38,27 +38,29 @@ class WeatherBlocBloc extends Bloc<WeatherBlocEvent, WeatherBlocState> {
         final weatherCondition = weatherData['weather'][0]['main'];
         final temperature =
             (weatherData['main']['temp'] - 273.15).toStringAsFixed(0);
-        String photoType = ImageManager.wSunny;
+        String animationType = AnimationManager.aSunny;
         switch (weatherCondition) {
           case 'Thunderstorm':
-            photoType = ImageManager.wStormy;
+            animationType = AnimationManager.aStormy;
             break;
           case 'Drizzle':
           case 'Rain':
-            photoType = ImageManager.wRainy;
+            animationType = AnimationManager.aRainy;
             break;
           case 'Snow':
-            photoType = ImageManager.wSnowy;
+            animationType = AnimationManager.aSnowy;
             break;
           case 'Clear':
-            photoType = ImageManager.wSunny;
+            animationType = AnimationManager.aSunny;
+            break;
+          case 'Mist':
+            animationType = AnimationManager.aMisty;
             break;
           case 'Clouds':
-          case 'Atmosphere':
-            photoType = ImageManager.wCloudy;
+            animationType = AnimationManager.aCloudy;
             break;
           default:
-            photoType = ImageManager.wSunny;
+            animationType = AnimationManager.aSunnyAndCloudy;
             break;
         }
 
@@ -66,7 +68,7 @@ class WeatherBlocBloc extends Bloc<WeatherBlocEvent, WeatherBlocState> {
           cityName,
           weatherCondition,
           temperature,
-          photoType,
+          animationType,
         ));
       } else {
         emit(WeatherBlocState.error('Error retrieving weather'));

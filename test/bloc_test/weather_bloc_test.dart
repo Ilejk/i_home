@@ -71,7 +71,7 @@ void main() {
           'New York',
           'Clear',
           '20',
-          ImageManager.wSunny,
+          AnimationManager.aSunny,
         ),
       ];
 

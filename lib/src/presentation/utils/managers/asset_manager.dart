@@ -23,14 +23,17 @@ class ImageManager {
   static const homeSmartFridge = '$imagePath/refrigerator.png';
   //PROFILE
   static const defaultUserIMG = '$imagePath/defaultUserIMG.png';
-  //WEATHER
-  static const wCloudy = '$imagePath/cloudy.png';
-  static const wRainy = '$imagePath/rainy.png';
-  static const wSnowy = '$imagePath/snow.png';
-  static const wSunnyAndCloudy = '$imagePath/sunCloud.png';
-  static const wSunny = '$imagePath/sunny.png';
-  static const wWindy = '$imagePath/wind.png';
-  static const wStormy = '$imagePath/storm.png';
+
   //DEVICE
   static const congo = '$imagePath/congo.png';
+}
+
+class AnimationManager {
+  static const aCloudy = '$animationPath/cloudy.json';
+  static const aRainy = '$animationPath/rainy.json';
+  static const aSnowy = '$animationPath/snowy.json';
+  static const aSunnyAndCloudy = '$animationPath/sunnyAndCloudy.json';
+  static const aSunny = '$animationPath/sunny.json';
+  static const aMisty = '$animationPath/misty.json';
+  static const aStormy = '$animationPath/stormy.json';
 }

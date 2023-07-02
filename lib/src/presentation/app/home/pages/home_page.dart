@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                       const HeightSpacer(iH: SizeManager.s20),
                       SizedBox(
                         width: SizeManager.deviceWidth,
-                        height: SizeManager.deviceHeight / 2,
+                        height: SizeManager.deviceHeight / 1.9,
                         child: GridView.builder(
                           itemCount: 4,
                           physics: const NeverScrollableScrollPhysics(),

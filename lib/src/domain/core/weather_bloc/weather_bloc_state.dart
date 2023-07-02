@@ -6,7 +6,7 @@ class WeatherBlocState extends Equatable {
   final String weatherCondition;
   final String temperature;
   final String error;
-  final String photo;
+  final String animation;
 
   const WeatherBlocState({
     this.cityName = '',
@@ -14,7 +14,7 @@ class WeatherBlocState extends Equatable {
     this.isLoading = false,
     this.temperature = '',
     this.weatherCondition = '',
-    this.photo = '',
+    this.animation = '',
   });
 
   factory WeatherBlocState.loading() {
@@ -26,7 +26,7 @@ class WeatherBlocState extends Equatable {
       cityName: cityName,
       weatherCondition: weatherCondition,
       temperature: temperature,
-      photo: photo,
+      animation: photo,
     );
   }
   factory WeatherBlocState.error(String error) {
@@ -35,5 +35,5 @@ class WeatherBlocState extends Equatable {
 
   @override
   List<Object?> get props =>
-      [isLoading, cityName, weatherCondition, temperature, error, photo];
+      [isLoading, cityName, weatherCondition, temperature, error, animation];
 }

@@ -18,7 +18,7 @@ class PhotoGrid1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: SizeManager.s500.h,
+      height: SizeManager.s525.h,
       child: Stack(
         children: [
           Positioned(
@@ -94,7 +94,7 @@ class PhotoGrid2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: SizeManager.s500.h,
+      height: SizeManager.s525.h,
       child: Stack(
         children: [
           Positioned(
@@ -154,7 +154,7 @@ class PhotoGrid3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: SizeManager.s500.h,
+      height: SizeManager.s525.h,
       child: Stack(
         children: [
           Positioned(

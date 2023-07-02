@@ -40,6 +40,7 @@ class ProfileRepository {
         pickedImage = await referenceImageToUpload.getDownloadURL();
       } catch (e) {
         toastInfo(msg: e.toString());
+        print(e);
       }
 
       try {
@@ -49,9 +50,11 @@ class ProfileRepository {
             .update({'imageUrl': pickedImage});
       } catch (e) {
         toastInfo(msg: e.toString());
+        print(e);
       }
     } catch (e) {
       toastInfo(msg: StringManager.netError);
+      print(e);
     }
   }
 
@@ -69,10 +72,12 @@ class ProfileRepository {
         return setUserName;
       } catch (e) {
         toastInfo(msg: e.toString());
+        print(e);
         return emptyString;
       }
     } catch (e) {
       toastInfo(msg: StringManager.netError);
+      print(e);
       return emptyString;
     }
   }
@@ -86,6 +91,7 @@ class ProfileRepository {
           .get();
       return userDataSnapShot.get('imageUrl') ?? emptyString;
     } catch (e) {
+      print(e);
       return emptyString;
     }
   }

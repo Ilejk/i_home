@@ -23,7 +23,11 @@ class OnBoardingPageColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(PaddingManager.p24),
+      padding: const EdgeInsets.only(
+        left: PaddingManager.p24,
+        right: PaddingManager.p24,
+        bottom: PaddingManager.p24,
+      ),
       child: Column(
         children: [
           photoGridType,
